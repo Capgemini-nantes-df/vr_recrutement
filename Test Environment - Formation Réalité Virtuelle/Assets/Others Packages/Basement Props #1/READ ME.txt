@@ -1,0 +1,5 @@
+Thanks for downloading this pack! - if you would like to show your support please purchase our Basement environment pack $10: https://www.assetstore.unity3d.com/en/#!/content/85501
+
+If you are new to unity drag and drop the prefabbed models from the "prefabs" folder into your to get started! 
+
+If you have any issues or wish to make a suggestion please email us: sunsuitestudio@gmail.com
