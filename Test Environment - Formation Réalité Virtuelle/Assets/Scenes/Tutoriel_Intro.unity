@@ -1051,7 +1051,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4736264569281134, guid: c5326a2aedb5e0f4c84e98439108385d, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4266116346343316, guid: c5326a2aedb5e0f4c84e98439108385d, type: 2}
       propertyPath: m_RootOrder
@@ -1114,7 +1114,7 @@ Prefab:
     - target: {fileID: 114527578599392958, guid: c5326a2aedb5e0f4c84e98439108385d,
         type: 2}
       propertyPath: events.OnPush.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ChangeToScene5
+      value: ChangeToSceneTuto
       objectReference: {fileID: 0}
     - target: {fileID: 114527578599392958, guid: c5326a2aedb5e0f4c84e98439108385d,
         type: 2}
@@ -1163,7 +1163,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 45.99994, y: -586}
+  m_AnchoredPosition: {x: 0, y: -586}
   m_SizeDelta: {x: 1500, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &755758292
@@ -1430,7 +1430,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 908527422}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.431}
+  m_LocalPosition: {x: 0, y: 0, z: 0.43100002}
   m_LocalScale: {x: 0.001, y: 0.001, z: 0.001}
   m_Children:
   - {fileID: 638651197}
@@ -2582,7 +2582,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1822367217}
   m_LocalRotation: {x: 0, y: 0.70710677, z: -0.70710677, w: 0}
-  m_LocalPosition: {x: 61, y: -156, z: 0}
+  m_LocalPosition: {x: 0, y: -156, z: 0}
   m_LocalScale: {x: 3000, y: 3000, z: 3000}
   m_Children:
   - {fileID: 1815643541}
