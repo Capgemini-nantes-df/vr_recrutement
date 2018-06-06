@@ -37,6 +37,7 @@ TagManager:
   - SnapDropZone
   - Engine_Presentation
   - Engine_Assemblage
+  - btn_debug
   layers:
   - Default
   - TransparentFX

@@ -6,6 +6,8 @@ public class ControllerBtnHighlightHelp : MonoBehaviour
 {
     public bool tooltipsOnlyOneTime;
 
+    public bool noTooltipsMod;
+
     private VRTK_ControllerTooltips tooltips;
     private VRTK_ControllerHighlighter highligher;
     private VRTK_ControllerEvents events;
@@ -33,6 +35,11 @@ public class ControllerBtnHighlightHelp : MonoBehaviour
         currentPulseColor = pulseColor;
         highlighted = false;
         HelpToolTips = true;
+
+        if(noTooltipsMod == true)
+        {
+            tooltips.ToggleTips(false, VRTK_ControllerTooltips.TooltipButtons.TriggerTooltip);
+        }
 
         //Setup controller event listeners
 
@@ -78,14 +85,18 @@ public class ControllerBtnHighlightHelp : MonoBehaviour
     {
         if (highlighted == false)
         {
-            if(HelpToolTips == true && tooltipsOnlyOneTime == true)
+            if(noTooltipsMod == false)
             {
-                tooltips.ToggleTips(true, VRTK_ControllerTooltips.TooltipButtons.TriggerTooltip);
+                if (HelpToolTips == true && tooltipsOnlyOneTime == true)
+                {
+                    tooltips.ToggleTips(true, VRTK_ControllerTooltips.TooltipButtons.TriggerTooltip);
+                }
+                else if (tooltipsOnlyOneTime == false)
+                {
+                    tooltips.ToggleTips(false, VRTK_ControllerTooltips.TooltipButtons.TriggerTooltip);
+                }
             }
-            else if (tooltipsOnlyOneTime == false)
-            {
-                tooltips.ToggleTips(false, VRTK_ControllerTooltips.TooltipButtons.TriggerTooltip);
-            }
+            
             
             highligher.HighlightElement(SDK_BaseController.ControllerElements.Trigger, highlightColor, highlightTimer);
             highligher.HighlightElement(SDK_BaseController.ControllerElements.Trigger, highlightColor, highlightTimer);
@@ -94,15 +105,19 @@ public class ControllerBtnHighlightHelp : MonoBehaviour
         }
         else if (highlighted == true)
         {
-            if (HelpToolTips == true && tooltipsOnlyOneTime == true)
+            if (noTooltipsMod == false)
             {
-                tooltips.ToggleTips(false, VRTK_ControllerTooltips.TooltipButtons.TriggerTooltip);
-                HelpToolTips = false;
+                if (HelpToolTips == true && tooltipsOnlyOneTime == true)
+                {
+                    tooltips.ToggleTips(false, VRTK_ControllerTooltips.TooltipButtons.TriggerTooltip);
+                    HelpToolTips = false;
+                }
+                else if (tooltipsOnlyOneTime == false)
+                {
+                    tooltips.ToggleTips(false, VRTK_ControllerTooltips.TooltipButtons.TriggerTooltip);
+                }
             }
-            else if (tooltipsOnlyOneTime == false)
-            {
-                tooltips.ToggleTips(false, VRTK_ControllerTooltips.TooltipButtons.TriggerTooltip);
-            }
+            
 
 
             highligher.UnhighlightElement(SDK_BaseController.ControllerElements.Trigger);
@@ -119,14 +134,17 @@ public class ControllerBtnHighlightHelp : MonoBehaviour
     {
         if (highlighted == true)
         {
-            if(HelpToolTips == true && tooltipsOnlyOneTime == true)
+            if (noTooltipsMod == false)
             {
-                tooltips.ToggleTips(false, VRTK_ControllerTooltips.TooltipButtons.TriggerTooltip);
-                HelpToolTips = false;
-            }
-            else if (tooltipsOnlyOneTime == false)
-            {
-                tooltips.ToggleTips(true, VRTK_ControllerTooltips.TooltipButtons.TriggerTooltip);
+                if (HelpToolTips == true && tooltipsOnlyOneTime == true)
+                {
+                    tooltips.ToggleTips(false, VRTK_ControllerTooltips.TooltipButtons.TriggerTooltip);
+                    HelpToolTips = false;
+                }
+                else if (tooltipsOnlyOneTime == false)
+                {
+                    tooltips.ToggleTips(true, VRTK_ControllerTooltips.TooltipButtons.TriggerTooltip);
+                }
             }
 
             highligher.UnhighlightElement(SDK_BaseController.ControllerElements.Trigger);

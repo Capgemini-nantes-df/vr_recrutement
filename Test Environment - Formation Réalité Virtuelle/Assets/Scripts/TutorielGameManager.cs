@@ -10,7 +10,8 @@ public class TutorielGameManager : MonoBehaviour {
     public GameObject nextStepZone;
     private GameObject[] allSnapDropZone;
 
-    private int snapDropZoneCount;
+    public int snapDropZoneCount;
+
     private int validSnapCount;
     private bool isFinished;
 
@@ -18,12 +19,8 @@ public class TutorielGameManager : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        snapDropZoneCount = 0;
         validSnapCount = 0;
-        isFinished = false;
-
-        allSnapDropZone = GameObject.FindGameObjectsWithTag(snapDropTag);
-        snapDropZoneCount = GameObject.FindGameObjectsWithTag(snapDropTag).Length;
+        isFinished = false; 
     }
 
     // Update is called once per frame
@@ -31,25 +28,13 @@ public class TutorielGameManager : MonoBehaviour {
     {
         if(isFinished == false)
         {
-            if (snapDropZoneCount != 0)
+            if (validSnapCount == snapDropZoneCount)
             {
-
-                if (validSnapCount == snapDropZoneCount && isFinished == false)
-                {
-                    Debug.Log("GG !");
-                    isFinished = true;
-                    nextStepZone.SetActive(true);
-                }
+                Debug.Log("GG !");
+                isFinished = true;
+                nextStepZone.SetActive(true);
             }
-            else
-            {
-                allSnapDropZone = GameObject.FindGameObjectsWithTag(snapDropTag);
-                foreach (GameObject sdz in allSnapDropZone)
-                {
-                    snapDropZoneCount += 1;
-                    snapDropZoneCount = GameObject.FindGameObjectsWithTag(snapDropTag).Length;
-                }
-            }
+            
         }
        
 
@@ -57,12 +42,16 @@ public class TutorielGameManager : MonoBehaviour {
 
     public void addOneCompletedSpot()
     {
+        Debug.Log("Une pièce a été placée");
         validSnapCount += 1;
+        Debug.Log("Pièces placées : " + validSnapCount + " sur " + snapDropZoneCount);
     }
 
     public void supprOneCompletedSpot()
     {
+        Debug.Log("une pièce a été retirée");
         validSnapCount -= 1;
+        Debug.Log("Pièces placées : " + validSnapCount + " sur " + snapDropZoneCount);
     }
 
 }

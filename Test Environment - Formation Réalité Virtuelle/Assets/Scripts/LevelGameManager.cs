@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelGameManager : MonoBehaviour {
 
@@ -14,6 +15,8 @@ public class LevelGameManager : MonoBehaviour {
     [Header("Lvl Game Settings")]
 
     public string snapDropTag;
+    public GameObject scoringText;
+
     private GameObject[] allSnapDropZone;
 
     private int snapDropZoneCount;
@@ -25,6 +28,8 @@ public class LevelGameManager : MonoBehaviour {
     void Start () {
         snapDropZoneCount = 0;
         isFinished = false;
+        validSnapCount = 0;
+
 
         allSnapDropZone = GameObject.FindGameObjectsWithTag(snapDropTag);
         snapDropZoneCount = GameObject.FindGameObjectsWithTag(snapDropTag).Length;
@@ -32,7 +37,6 @@ public class LevelGameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        validSnapCount = 0;
 
         if(MotorPresentation.activeSelf)
         {
@@ -48,38 +52,35 @@ public class LevelGameManager : MonoBehaviour {
             }
         }
        
-
-        if (snapDropZoneCount != 0)
+        if(isFinished == false)
         {
-            foreach (GameObject sdz in allSnapDropZone)
+            if (snapDropZoneCount != 0)
             {
-                if (sdz.transform.childCount == 2)
+                
+                if (validSnapCount == snapDropZoneCount)
                 {
-                    validSnapCount += 1;
+                    Debug.Log("GG !");
+                    isFinished = true;
+
+                    MotorPresentation.SetActive(true);
+                    MotorAssemblage.SetActive(false);
+                    MotorRunning();
+
+
                 }
             }
-
-            if (validSnapCount == snapDropZoneCount && isFinished == false)
+            else
             {
-                Debug.Log("GG !");
-                isFinished = true;
-
-                MotorPresentation.SetActive(true);
-                MotorAssemblage.SetActive(false);
-                MotorRunning();
-
-
+                allSnapDropZone = GameObject.FindGameObjectsWithTag(snapDropTag);
+                foreach (GameObject sdz in allSnapDropZone)
+                {
+                    snapDropZoneCount += 1;
+                    snapDropZoneCount = GameObject.FindGameObjectsWithTag(snapDropTag).Length;
+                }
             }
         }
-        else
-        {
-            allSnapDropZone = GameObject.FindGameObjectsWithTag(snapDropTag);
-            foreach (GameObject sdz in allSnapDropZone)
-            {
-                snapDropZoneCount += 1;
-                snapDropZoneCount = GameObject.FindGameObjectsWithTag(snapDropTag).Length;
-            }
-        }
+
+        
         
 	}
 
@@ -98,5 +99,26 @@ public class LevelGameManager : MonoBehaviour {
     public void MotorRunning()
     {
         motorAnim.SetBool("isRunning", true);
+    }
+
+    public void addOneCompletedSpot()
+    {
+        Debug.Log("Une pièce a été placée");
+        validSnapCount += 1;
+        Debug.Log("Pièces placées : " + validSnapCount + " sur " + snapDropZoneCount);
+        UpdateScoringText();
+    }
+
+    public void supprOneCompletedSpot()
+    {
+        Debug.Log("une pièce a été retirée");
+        validSnapCount -= 1;
+        Debug.Log("Pièces placées : " + validSnapCount + " sur " + snapDropZoneCount);
+        UpdateScoringText();
+    }
+
+    public void UpdateScoringText()
+    {
+        scoringText.GetComponent<Text>().text = validSnapCount + "/" + snapDropZoneCount;
     }
 }
