@@ -16,12 +16,15 @@ public class LevelGameManager : MonoBehaviour {
 
     public string snapDropTag;
     public GameObject scoringText;
+    public GameObject debugSnapText;
 
     private GameObject[] allSnapDropZone;
 
     private int snapDropZoneCount;
     private int validSnapCount;
     private bool isFinished;
+
+    private string lastInteractObjName;
 
 
     // Use this for initialization
@@ -101,24 +104,41 @@ public class LevelGameManager : MonoBehaviour {
         motorAnim.SetBool("isRunning", true);
     }
 
-    public void addOneCompletedSpot()
+    public void addOneCompletedSpot(string name)
     {
+        lastInteractObjName = name;
         Debug.Log("Une pièce a été placée");
         validSnapCount += 1;
         Debug.Log("Pièces placées : " + validSnapCount + " sur " + snapDropZoneCount);
         UpdateScoringText();
+        UpdateDebugSnapText(true);
     }
 
-    public void supprOneCompletedSpot()
+    public void supprOneCompletedSpot(string name)
     {
+        lastInteractObjName = name;
         Debug.Log("une pièce a été retirée");
         validSnapCount -= 1;
         Debug.Log("Pièces placées : " + validSnapCount + " sur " + snapDropZoneCount);
         UpdateScoringText();
+        UpdateDebugSnapText(false);
     }
 
-    public void UpdateScoringText()
+    private void UpdateScoringText()
     {
         scoringText.GetComponent<Text>().text = validSnapCount + "/" + snapDropZoneCount;
+    }
+
+    private void UpdateDebugSnapText(bool statut)
+    {
+        if(statut == true)
+        {
+            debugSnapText.GetComponent<Text>().text = "La pièce : " + lastInteractObjName + " a été placé.";
+        }
+        else if(statut == false)
+        {
+            debugSnapText.GetComponent<Text>().text = "La pièce : " + lastInteractObjName + " a été retiré.";
+        }
+        
     }
 }

@@ -136,8 +136,8 @@ Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 06e2f43a2b50ea548b7bfc971c920792, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 30184270}
-  m_LocalRotation: {x: 0.000000081460335, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.23652571, y: 131.9051, z: -8.424955}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.2365257, y: 131.90508, z: -8.424954}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2071900031}
@@ -483,9 +483,10 @@ GameObject:
   - component: {fileID: 94908605}
   - component: {fileID: 94908609}
   - component: {fileID: 94908604}
+  - component: {fileID: 94908610}
   m_Layer: 0
   m_Name: SnapDropZone_Boole.2
-  m_TagString: Untagged
+  m_TagString: SnapDropZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -592,6 +593,59 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliderIsTriggerOption: 1
   initialAppearanceSnapDrop: 0
+--- !u!114 &94908610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 94908602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfac5512b3c9b7e40b8384efa162bf18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnObjectEnteredSnapDropZone:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: VRTK.UnityEventHelper.VRTK_SnapDropZone_UnityEvents+SnapDropZoneEvent,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnObjectExitedSnapDropZone:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: VRTK.UnityEventHelper.VRTK_SnapDropZone_UnityEvents+SnapDropZoneEvent,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnObjectSnappedToDropZone:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1046473485}
+        m_MethodName: addOneCompletedSpot
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Boole_2
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: VRTK.UnityEventHelper.VRTK_SnapDropZone_UnityEvents+SnapDropZoneEvent,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnObjectUnsnappedFromDropZone:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1046473485}
+        m_MethodName: supprOneCompletedSpot
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Boole_2
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: VRTK.UnityEventHelper.VRTK_SnapDropZone_UnityEvents+SnapDropZoneEvent,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!4 &99684651 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4305215182167688, guid: 6a10ac21e29973049a457d5d0189668c,
@@ -1147,7 +1201,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 152239812}
   m_LocalRotation: {x: -0, y: 0.84528106, z: -0, w: 0.534322}
-  m_LocalPosition: {x: 83.5684, y: 89.600044, z: -95.446625}
+  m_LocalPosition: {x: 64.4, y: 89.8, z: -89.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 206293882}
@@ -1567,7 +1621,7 @@ Light:
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
-    m_Resolution: -1
+    m_Resolution: 2
     m_CustomResolution: -1
     m_Strength: 0.5
     m_Bias: 0.05
@@ -1814,8 +1868,8 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 254730262}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 117.60002, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 117.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2071900031}
@@ -1966,9 +2020,10 @@ GameObject:
   - component: {fileID: 304444207}
   - component: {fileID: 304444206}
   - component: {fileID: 304444205}
+  - component: {fileID: 304444210}
   m_Layer: 0
   m_Name: SnapDropZone_Cube_2
-  m_TagString: Untagged
+  m_TagString: SnapDropZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2064,6 +2119,59 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 304444203}
   m_Mesh: {fileID: 4300030, guid: 9d5971a8368db294f919fbbc17b1dfe3, type: 3}
+--- !u!114 &304444210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 304444203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfac5512b3c9b7e40b8384efa162bf18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnObjectEnteredSnapDropZone:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: VRTK.UnityEventHelper.VRTK_SnapDropZone_UnityEvents+SnapDropZoneEvent,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnObjectExitedSnapDropZone:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: VRTK.UnityEventHelper.VRTK_SnapDropZone_UnityEvents+SnapDropZoneEvent,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnObjectSnappedToDropZone:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1046473485}
+        m_MethodName: addOneCompletedSpot
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Cube_2
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: VRTK.UnityEventHelper.VRTK_SnapDropZone_UnityEvents+SnapDropZoneEvent,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnObjectUnsnappedFromDropZone:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1046473485}
+        m_MethodName: supprOneCompletedSpot
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Cube_2
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: VRTK.UnityEventHelper.VRTK_SnapDropZone_UnityEvents+SnapDropZoneEvent,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!1001 &304942018
 Prefab:
   m_ObjectHideFlags: 0
@@ -2315,6 +2423,76 @@ Transform:
   m_Father: {fileID: 304444204}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &351829898
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1896795493}
+    m_Modifications:
+    - target: {fileID: 4833732748261610, guid: 1799965b28bf72144b57d635ee102157, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.6986234
+      objectReference: {fileID: 0}
+    - target: {fileID: 4833732748261610, guid: 1799965b28bf72144b57d635ee102157, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.0071132
+      objectReference: {fileID: 0}
+    - target: {fileID: 4833732748261610, guid: 1799965b28bf72144b57d635ee102157, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -1.0039508
+      objectReference: {fileID: 0}
+    - target: {fileID: 4833732748261610, guid: 1799965b28bf72144b57d635ee102157, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4833732748261610, guid: 1799965b28bf72144b57d635ee102157, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.9396927
+      objectReference: {fileID: 0}
+    - target: {fileID: 4833732748261610, guid: 1799965b28bf72144b57d635ee102157, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4833732748261610, guid: 1799965b28bf72144b57d635ee102157, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: -0.3420201
+      objectReference: {fileID: 0}
+    - target: {fileID: 4833732748261610, guid: 1799965b28bf72144b57d635ee102157, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4833732748261610, guid: 1799965b28bf72144b57d635ee102157, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.20000009
+      objectReference: {fileID: 0}
+    - target: {fileID: 4833732748261610, guid: 1799965b28bf72144b57d635ee102157, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0.20000009
+      objectReference: {fileID: 0}
+    - target: {fileID: 114619947201798678, guid: 1799965b28bf72144b57d635ee102157,
+        type: 2}
+      propertyPath: m_Text
+      value: 0/5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 1799965b28bf72144b57d635ee102157, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &351829899 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4833732748261610, guid: 1799965b28bf72144b57d635ee102157,
+    type: 2}
+  m_PrefabInternal: {fileID: 351829898}
+--- !u!1 &351829900 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1198608762145862, guid: 1799965b28bf72144b57d635ee102157,
+    type: 2}
+  m_PrefabInternal: {fileID: 351829898}
+--- !u!1 &351829901 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1822056604324062, guid: 1799965b28bf72144b57d635ee102157,
+    type: 2}
+  m_PrefabInternal: {fileID: 351829898}
 --- !u!1 &367048366
 GameObject:
   m_ObjectHideFlags: 0
@@ -2860,7 +3038,7 @@ Light:
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
-    m_Resolution: -1
+    m_Resolution: 2
     m_CustomResolution: -1
     m_Strength: 0.5
     m_Bias: 0.05
@@ -3695,9 +3873,10 @@ GameObject:
   - component: {fileID: 704689567}
   - component: {fileID: 704689571}
   - component: {fileID: 704689566}
+  - component: {fileID: 704689572}
   m_Layer: 0
   m_Name: SnapDropZone_Boole.1
-  m_TagString: Untagged
+  m_TagString: SnapDropZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3804,6 +3983,59 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliderIsTriggerOption: 1
   initialAppearanceSnapDrop: 0
+--- !u!114 &704689572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 704689564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfac5512b3c9b7e40b8384efa162bf18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnObjectEnteredSnapDropZone:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: VRTK.UnityEventHelper.VRTK_SnapDropZone_UnityEvents+SnapDropZoneEvent,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnObjectExitedSnapDropZone:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: VRTK.UnityEventHelper.VRTK_SnapDropZone_UnityEvents+SnapDropZoneEvent,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnObjectSnappedToDropZone:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1046473485}
+        m_MethodName: addOneCompletedSpot
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Boole_1
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: VRTK.UnityEventHelper.VRTK_SnapDropZone_UnityEvents+SnapDropZoneEvent,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnObjectUnsnappedFromDropZone:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1046473485}
+        m_MethodName: supprOneCompletedSpot
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Boole_1
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: VRTK.UnityEventHelper.VRTK_SnapDropZone_UnityEvents+SnapDropZoneEvent,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!1 &739503132
 GameObject:
   m_ObjectHideFlags: 0
@@ -4402,7 +4634,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 1, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0.48000222, z: -0.0000019073486}
+  m_ConnectedAnchor: {x: 0, y: 0.47999942, z: 0}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -4848,9 +5080,10 @@ GameObject:
   - component: {fileID: 790159662}
   - component: {fileID: 790159661}
   - component: {fileID: 790159660}
+  - component: {fileID: 790159664}
   m_Layer: 0
   m_Name: SnapDropZone_Cube_1
-  m_TagString: Untagged
+  m_TagString: SnapDropZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4938,6 +5171,59 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 15
   m_Center: {x: -18.135803, y: -20.19232, z: -4.3169127}
+--- !u!114 &790159664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 790159658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfac5512b3c9b7e40b8384efa162bf18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnObjectEnteredSnapDropZone:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: VRTK.UnityEventHelper.VRTK_SnapDropZone_UnityEvents+SnapDropZoneEvent,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnObjectExitedSnapDropZone:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: VRTK.UnityEventHelper.VRTK_SnapDropZone_UnityEvents+SnapDropZoneEvent,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnObjectSnappedToDropZone:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1046473485}
+        m_MethodName: addOneCompletedSpot
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Cube_1
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: VRTK.UnityEventHelper.VRTK_SnapDropZone_UnityEvents+SnapDropZoneEvent,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnObjectUnsnappedFromDropZone:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1046473485}
+        m_MethodName: supprOneCompletedSpot
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Cube_1
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: VRTK.UnityEventHelper.VRTK_SnapDropZone_UnityEvents+SnapDropZoneEvent,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!1 &807792306
 GameObject:
   m_ObjectHideFlags: 0
@@ -6346,6 +6632,23 @@ GameObject:
   m_PrefabParentObject: {fileID: 1419166906167402, guid: d654df6d35de0a44e860ff475bdb51c6,
     type: 2}
   m_PrefabInternal: {fileID: 1958214637}
+--- !u!114 &1046473485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1046473484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a35ffebb3286404298c1e113881238e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  motorAnim: {fileID: 2071900030}
+  MotorPresentation: {fileID: 1914002128}
+  MotorAssemblage: {fileID: 1867443052}
+  snapDropTag: SnapDropZone
+  scoringText: {fileID: 351829901}
+  debugSnapText: {fileID: 351829900}
 --- !u!114 &1046473490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7070,12 +7373,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1134408334}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.816207, y: 69.52174, z: -37.3}
-  m_LocalScale: {x: 66.66667, y: 66.66667, z: 66.66667}
+  m_LocalPosition: {x: -0.0572431, y: 1.0428262, z: -0.5595}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 772931377}
   - {fileID: 1623261453}
-  m_Father: {fileID: 1867443053}
+  m_Father: {fileID: 1896795493}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1152638867
@@ -7402,7 +7705,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1203342367}
   m_LocalRotation: {x: -0, y: 0.8718584, z: -0, w: 0.48975804}
-  m_LocalPosition: {x: 69.2, y: 89.79999, z: -98.5}
+  m_LocalPosition: {x: 41.6, y: 89.79999, z: -127.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1617327233}
@@ -7953,7 +8256,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4343621464076782, guid: 3d96b7a1a6b01cf4ba6797d2bb336f8b, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4343621464076782, guid: 3d96b7a1a6b01cf4ba6797d2bb336f8b, type: 2}
       propertyPath: m_LocalScale.x
@@ -8347,7 +8650,7 @@ Light:
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
-    m_Resolution: -1
+    m_Resolution: 2
     m_CustomResolution: -1
     m_Strength: 0.5
     m_Bias: 0.05
@@ -8485,7 +8788,7 @@ Transform:
   - {fileID: 1203342368}
   - {fileID: 152239813}
   m_Father: {fileID: 1867443053}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1342491109
 GameObject:
@@ -9649,8 +9952,8 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1463153658}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 117.60002, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 117.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2071900031}
@@ -9724,8 +10027,8 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1479014890}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 117.60002, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 117.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2071900031}
@@ -9839,7 +10142,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4373318635104514, guid: 9d8878da0f2acfb43a9452ca2d9bd037, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.121
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9d8878da0f2acfb43a9452ca2d9bd037, type: 2}
@@ -9877,7 +10180,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1523183312}
   m_LocalRotation: {x: -0, y: 0.2701858, z: -0, w: 0.9628082}
-  m_LocalPosition: {x: 76.02468, y: 91.1, z: -99.8288}
+  m_LocalPosition: {x: 68.5, y: 91.1, z: -97.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1340172911}
@@ -10159,7 +10462,7 @@ Light:
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
-    m_Resolution: -1
+    m_Resolution: 2
     m_CustomResolution: -1
     m_Strength: 0.5
     m_Bias: 0.05
@@ -10294,9 +10597,10 @@ GameObject:
   - component: {fileID: 1601138065}
   - component: {fileID: 1601138064}
   - component: {fileID: 1601138063}
+  - component: {fileID: 1601138067}
   m_Layer: 0
   m_Name: SnapDropZone_Boole
-  m_TagString: Untagged
+  m_TagString: SnapDropZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10384,6 +10688,59 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 20.742733
   m_Center: {x: -0.0147771835, y: 14.503841, z: 5.0110507}
+--- !u!114 &1601138067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1601138061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfac5512b3c9b7e40b8384efa162bf18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnObjectEnteredSnapDropZone:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: VRTK.UnityEventHelper.VRTK_SnapDropZone_UnityEvents+SnapDropZoneEvent,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnObjectExitedSnapDropZone:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: VRTK.UnityEventHelper.VRTK_SnapDropZone_UnityEvents+SnapDropZoneEvent,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnObjectSnappedToDropZone:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1046473485}
+        m_MethodName: addOneCompletedSpot
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Boole
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: VRTK.UnityEventHelper.VRTK_SnapDropZone_UnityEvents+SnapDropZoneEvent,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnObjectUnsnappedFromDropZone:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1046473485}
+        m_MethodName: supprOneCompletedSpot
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Boole
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: VRTK.UnityEventHelper.VRTK_SnapDropZone_UnityEvents+SnapDropZoneEvent,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!1 &1617327232
 GameObject:
   m_ObjectHideFlags: 0
@@ -10546,14 +10903,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1623297888}
-  m_LocalRotation: {x: -0, y: -0.9848078, z: -0, w: 0.17364825}
-  m_LocalPosition: {x: 0.762, y: 1.0254, z: -0.775}
+  m_LocalRotation: {x: 0, y: 0.9848078, z: 0, w: 0.17364825}
+  m_LocalPosition: {x: -0.613, y: 1.0254, z: -0.775}
   m_LocalScale: {x: 0.2666445, y: 0.006, z: 0.34}
   m_Children:
   - {fileID: 1306893164}
   m_Father: {fileID: 1896795493}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -160, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 160, z: 0}
 --- !u!114 &1623297890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11238,9 +11595,10 @@ GameObject:
   - component: {fileID: 1770702543}
   - component: {fileID: 1770702542}
   - component: {fileID: 1770702541}
+  - component: {fileID: 1770702546}
   m_Layer: 0
   m_Name: SnapDropZone_Cylinder_2
-  m_TagString: Untagged
+  m_TagString: SnapDropZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11336,6 +11694,59 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1770702539}
   m_Mesh: {fileID: 4300036, guid: 9d5971a8368db294f919fbbc17b1dfe3, type: 3}
+--- !u!114 &1770702546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1770702539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfac5512b3c9b7e40b8384efa162bf18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnObjectEnteredSnapDropZone:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: VRTK.UnityEventHelper.VRTK_SnapDropZone_UnityEvents+SnapDropZoneEvent,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnObjectExitedSnapDropZone:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: VRTK.UnityEventHelper.VRTK_SnapDropZone_UnityEvents+SnapDropZoneEvent,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnObjectSnappedToDropZone:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1046473485}
+        m_MethodName: addOneCompletedSpot
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Cylinder_2
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: VRTK.UnityEventHelper.VRTK_SnapDropZone_UnityEvents+SnapDropZoneEvent,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnObjectUnsnappedFromDropZone:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1046473485}
+        m_MethodName: supprOneCompletedSpot
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Cylinder_2
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: VRTK.UnityEventHelper.VRTK_SnapDropZone_UnityEvents+SnapDropZoneEvent,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!1 &1789557818
 GameObject:
   m_ObjectHideFlags: 0
@@ -11401,7 +11812,7 @@ Transform:
   - {fileID: 304444204}
   - {fileID: 790159659}
   m_Father: {fileID: 1867443053}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 11.699, y: -67.862, z: 0.777}
 --- !u!114 &1802656498
 MonoBehaviour:
@@ -11627,8 +12038,8 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1860004204}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 117.60002, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 117.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2071900031}
@@ -11706,7 +12117,6 @@ Transform:
   m_Children:
   - {fileID: 301139708}
   - {fileID: 425201746}
-  - {fileID: 1134408335}
   - {fileID: 2016056105}
   - {fileID: 1802656497}
   - {fileID: 1340172911}
@@ -11749,6 +12159,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1623297889}
+  - {fileID: 351829899}
+  - {fileID: 1134408335}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11827,7 +12239,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1914002128}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55b72e604da55e94497ad44977ba2fac, type: 3}
   m_Name: 
@@ -12097,8 +12509,8 @@ Transform:
   m_PrefabParentObject: {fileID: 400002, guid: 06e2f43a2b50ea548b7bfc971c920792, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1984041196}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.36405483, y: 131.93681, z: 18.462862}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.3640548, y: 131.93677, z: 18.46286}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2071900031}
@@ -12627,9 +13039,10 @@ GameObject:
   - component: {fileID: 2105507552}
   - component: {fileID: 2105507551}
   - component: {fileID: 2105507550}
+  - component: {fileID: 2105507555}
   m_Layer: 0
   m_Name: SnapDropZone_Cylinder_1
-  m_TagString: Untagged
+  m_TagString: SnapDropZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12725,6 +13138,59 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2105507548}
   m_Mesh: {fileID: 4300034, guid: 9d5971a8368db294f919fbbc17b1dfe3, type: 3}
+--- !u!114 &2105507555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2105507548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfac5512b3c9b7e40b8384efa162bf18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnObjectEnteredSnapDropZone:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: VRTK.UnityEventHelper.VRTK_SnapDropZone_UnityEvents+SnapDropZoneEvent,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnObjectExitedSnapDropZone:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: VRTK.UnityEventHelper.VRTK_SnapDropZone_UnityEvents+SnapDropZoneEvent,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnObjectSnappedToDropZone:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1046473485}
+        m_MethodName: addOneCompletedSpot
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Cylinder_1
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: VRTK.UnityEventHelper.VRTK_SnapDropZone_UnityEvents+SnapDropZoneEvent,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnObjectUnsnappedFromDropZone:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1046473485}
+        m_MethodName: supprOneCompletedSpot
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Cyllinder_1
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: VRTK.UnityEventHelper.VRTK_SnapDropZone_UnityEvents+SnapDropZoneEvent,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!1 &2119639751
 GameObject:
   m_ObjectHideFlags: 0
