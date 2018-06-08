@@ -21,6 +21,7 @@ public class ControllerBtnHighlightHelp : MonoBehaviour
     private bool highlighted;
     private bool HelpToolTips;
 
+
     private void Start()
     {
         if (GetComponent<VRTK_ControllerEvents>() == null)

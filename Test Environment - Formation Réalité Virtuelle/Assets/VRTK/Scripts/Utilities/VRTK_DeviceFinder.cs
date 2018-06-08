@@ -1,6 +1,7 @@
 ﻿// Device Finder|Utilities|90020
 namespace VRTK
 {
+    using System;
     using UnityEngine;
     using UnityEngine.VR;
 
@@ -20,6 +21,11 @@ namespace VRTK
             Headset,
             LeftController,
             RightController,
+        }
+
+        internal static GameObject GetModelAliasController(object gameObject)
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>

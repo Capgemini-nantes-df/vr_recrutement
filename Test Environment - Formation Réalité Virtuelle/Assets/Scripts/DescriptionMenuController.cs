@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using VRTK;
 
@@ -32,7 +33,9 @@ public class DescriptionMenuController : MonoBehaviour
     [Tooltip("The scale multiplier, which relates to the scale of parent interactable object.")]
     public float zoomScaleMultiplier = 1f;
     [Tooltip("The PanelMenuItemController, which is triggered by pressing on the controller touchpad.")]
-    public VRTK_PanelMenuItemController panelMenuItemController;
+    public List<VRTK_PanelMenuItemController> allPanelMenuItemController;
+
+    private int currentPanelId;
 
 
     // Relates to scale of canvas on panel items.
@@ -128,6 +131,13 @@ public class DescriptionMenuController : MonoBehaviour
 
     protected virtual void Start()
     {
+        currentPanelId = 0;
+
+        if (transform.GetChild(0).gameObject.activeSelf == false)
+        {
+            transform.GetChild(0).gameObject.SetActive(true);
+        }
+
         interactableObject = gameObject.transform.parent.gameObject;
         if (interactableObject == null || interactableObject.GetComponent<VRTK_InteractableObject>() == null)
         {
@@ -296,11 +306,27 @@ public class DescriptionMenuController : MonoBehaviour
     {
         if (isGrabbed)
         {
-            //Use it if you want a speculare touchpad press position 
-            //var pressPosition = CalculateTouchpadPressPosition();
-            HandlePanelMenuItemControllerVisibility(panelMenuItemController);
+            //HandlePanelMenuItemControllerVisibility(allPanelMenuItemController[currentPanelId]);
 
-            /*
+            if (currentPanelMenuItemController == null)
+            {
+                currentPanelMenuItemController = allPanelMenuItemController[0];
+                currentPanelMenuItemController.Show(interactableObject);
+                ShowMenu();
+            }
+            else
+            {
+                allPanelMenuItemController[currentPanelId].Hide(interactableObject);
+                currentPanelMenuItemController = null;
+                HideMenu(true);
+                currentPanelId = 0;
+            }
+
+            //Use it if you want a speculare touchpad press position// 
+
+            /*var pressPosition = CalculateTouchpadPressPosition();
+
+            
             switch (pressPosition)
             {
                 case TouchpadPressPosition.Top:
@@ -437,7 +463,13 @@ public class DescriptionMenuController : MonoBehaviour
     {
         if (currentPanelMenuItemController != null)
         {
-            currentPanelMenuItemController.SwipeLeft(interactableObject);
+            //currentPanelMenuItemController.SwipeLeft(interactableObject);
+
+            if(allPanelMenuItemController[currentPanelId-1])
+            {
+                currentPanelId -= 1;
+                HandlePanelMenuItemControllerVisibility(allPanelMenuItemController[currentPanelId]);
+            }
         }
     }
 
@@ -445,7 +477,13 @@ public class DescriptionMenuController : MonoBehaviour
     {
         if (currentPanelMenuItemController != null)
         {
-            currentPanelMenuItemController.SwipeRight(interactableObject);
+            //currentPanelMenuItemController.SwipeRight(interactableObject);
+
+            if (allPanelMenuItemController[currentPanelId + 1])
+            {
+                currentPanelId += 1;
+                HandlePanelMenuItemControllerVisibility(allPanelMenuItemController[currentPanelId]);
+            }
         }
     }
 
