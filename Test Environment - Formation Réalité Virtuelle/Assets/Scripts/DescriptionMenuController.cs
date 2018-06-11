@@ -35,6 +35,8 @@ public class DescriptionMenuController : MonoBehaviour
     [Tooltip("The PanelMenuItemController, which is triggered by pressing on the controller touchpad.")]
     public List<VRTK_PanelMenuItemController> allPanelMenuItemController;
 
+    public AudioClip swapEffect;
+
     private int currentPanelId;
 
 
@@ -60,6 +62,8 @@ public class DescriptionMenuController : MonoBehaviour
     protected bool isPendingSwipeCheck = false;
     protected bool isGrabbed = false;
     protected bool isShown = false;
+
+    protected AudioSource soundEffect;
 
     /// <summary>
     /// The ToggleMenu method is used to show or hide the menu.
@@ -132,6 +136,8 @@ public class DescriptionMenuController : MonoBehaviour
     protected virtual void Start()
     {
         currentPanelId = 0;
+
+        soundEffect = GetComponent<AudioSource>();
 
         if (transform.GetChild(0).gameObject.activeSelf == false)
         {
@@ -468,6 +474,7 @@ public class DescriptionMenuController : MonoBehaviour
             if(allPanelMenuItemController[currentPanelId-1])
             {
                 currentPanelId -= 1;
+                soundEffect.PlayOneShot(swapEffect, 1F);
                 HandlePanelMenuItemControllerVisibility(allPanelMenuItemController[currentPanelId]);
             }
         }
@@ -482,6 +489,7 @@ public class DescriptionMenuController : MonoBehaviour
             if (allPanelMenuItemController[currentPanelId + 1])
             {
                 currentPanelId += 1;
+                soundEffect.PlayOneShot(swapEffect, 1F);
                 HandlePanelMenuItemControllerVisibility(allPanelMenuItemController[currentPanelId]);
             }
         }

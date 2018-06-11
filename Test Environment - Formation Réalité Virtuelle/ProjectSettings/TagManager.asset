@@ -38,6 +38,8 @@ TagManager:
   - Engine_Presentation
   - Engine_Assemblage
   - btn_debug
+  - ObjToSnap
+  - musicDiffuse
   layers:
   - Default
   - TransparentFX

@@ -18,7 +18,12 @@ public class LevelGameManager : MonoBehaviour {
     public GameObject scoringText;
     public GameObject debugSnapText;
 
+    [Header("Music Settings")]
+    public AudioClip musicSound;
+    public string musicDiffuseTag;
+
     private GameObject[] allSnapDropZone;
+    private GameObject[] allMusicDiffusers;
 
     private int snapDropZoneCount;
     private int validSnapCount;
@@ -33,15 +38,29 @@ public class LevelGameManager : MonoBehaviour {
         isFinished = false;
         validSnapCount = 0;
 
-
         allSnapDropZone = GameObject.FindGameObjectsWithTag(snapDropTag);
         snapDropZoneCount = GameObject.FindGameObjectsWithTag(snapDropTag).Length;
-    }
-	
-	// Update is called once per frame
-	void Update () {
 
-        if(MotorPresentation.activeSelf)
+        allMusicDiffusers = GameObject.FindGameObjectsWithTag(musicDiffuseTag);
+
+        foreach (GameObject md in allMusicDiffusers)
+        {
+        md.GetComponent<AudioSource>().clip = musicSound;
+        md.GetComponent<AudioSource>().Play();
+        }
+
+    }
+
+    // Update is called once per frame
+    void Update () {
+
+        //Sync of all Music Diffusers
+        for (int i=1; i < allMusicDiffusers.Length; i++ )
+        {
+            allMusicDiffusers[i].GetComponent<AudioSource>().timeSamples = allMusicDiffusers[0].GetComponent<AudioSource>().timeSamples;
+        }
+
+        if (MotorPresentation.activeSelf)
         {
             if (motorAnim.GetCurrentAnimatorStateInfo(0).IsName("motor_end_pres"))
             {
@@ -63,6 +82,7 @@ public class LevelGameManager : MonoBehaviour {
                 if (validSnapCount == snapDropZoneCount)
                 {
                     Debug.Log("GG !");
+                    UpdateDebugSnapText("Félicitation !");
                     isFinished = true;
 
                     MotorPresentation.SetActive(true);
@@ -75,11 +95,7 @@ public class LevelGameManager : MonoBehaviour {
             else
             {
                 allSnapDropZone = GameObject.FindGameObjectsWithTag(snapDropTag);
-                foreach (GameObject sdz in allSnapDropZone)
-                {
-                    snapDropZoneCount += 1;
-                    snapDropZoneCount = GameObject.FindGameObjectsWithTag(snapDropTag).Length;
-                }
+                snapDropZoneCount = GameObject.FindGameObjectsWithTag(snapDropTag).Length;
             }
         }
 
@@ -104,24 +120,55 @@ public class LevelGameManager : MonoBehaviour {
         motorAnim.SetBool("isRunning", true);
     }
 
-    public void addOneCompletedSpot(string name)
+    /*public void addOneCompletedSpot(string name)
     {
         lastInteractObjName = name;
         Debug.Log("Une pièce a été placée");
         validSnapCount += 1;
-        Debug.Log("Pièces placées : " + validSnapCount + " sur " + snapDropZoneCount);
+        Debug.Log("Pièce placée : " + validSnapCount + " sur " + snapDropZoneCount);
         UpdateScoringText();
         UpdateDebugSnapText(true);
-    }
+    }*/
 
-    public void supprOneCompletedSpot(string name)
+    /*public void supprOneCompletedSpot(string name)
     {
         lastInteractObjName = name;
         Debug.Log("une pièce a été retirée");
         validSnapCount -= 1;
-        Debug.Log("Pièces placées : " + validSnapCount + " sur " + snapDropZoneCount);
+        Debug.Log("Pièce retirée : " + validSnapCount );
         UpdateScoringText();
         UpdateDebugSnapText(false);
+    }*/
+
+    public void UpdateNumberCompletedSpot(string name)
+    {
+        int currentValidSnapCount = validSnapCount;
+        validSnapCount = 0;
+        lastInteractObjName = name;
+
+        foreach (GameObject sdz in allSnapDropZone)
+        {
+            if(sdz.transform.childCount == 2)
+            {
+                validSnapCount += 1;
+            }
+        }
+
+        if(validSnapCount < currentValidSnapCount)
+        {   
+            Debug.Log("une pièce a été retirée");
+            Debug.Log("Pièce placée : " + validSnapCount + " sur " + snapDropZoneCount);
+            UpdateScoringText();
+            UpdateDebugSnapText("La pièce : " + lastInteractObjName + " a été placé.");
+        }
+        else if(validSnapCount > currentValidSnapCount)
+        {
+            Debug.Log("Une pièce a été placée");
+            Debug.Log("Pièces retirée : " + validSnapCount + " sur " + snapDropZoneCount);
+            UpdateScoringText();
+            UpdateDebugSnapText("La pièce : " + lastInteractObjName + " a été retiré.");
+        }
+        
     }
 
     private void UpdateScoringText()
@@ -129,16 +176,9 @@ public class LevelGameManager : MonoBehaviour {
         scoringText.GetComponent<Text>().text = validSnapCount + "/" + snapDropZoneCount;
     }
 
-    private void UpdateDebugSnapText(bool statut)
+    private void UpdateDebugSnapText(string textUpdate)
     {
-        if(statut == true)
-        {
-            debugSnapText.GetComponent<Text>().text = "La pièce : " + lastInteractObjName + " a été placé.";
-        }
-        else if(statut == false)
-        {
-            debugSnapText.GetComponent<Text>().text = "La pièce : " + lastInteractObjName + " a été retiré.";
-        }
-        
+        debugSnapText.GetComponent<Text>().text = textUpdate;
+
     }
 }
