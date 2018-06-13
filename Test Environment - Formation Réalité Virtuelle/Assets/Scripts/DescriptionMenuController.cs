@@ -145,6 +145,10 @@ public class DescriptionMenuController : MonoBehaviour
         }
 
         interactableObject = gameObject.transform.parent.gameObject;
+        if(interactableObject == null || interactableObject.GetComponent<VRTK_InteractableObject>() == null)
+        {
+            interactableObject = gameObject.transform.parent.parent.gameObject;
+        }
         if (interactableObject == null || interactableObject.GetComponent<VRTK_InteractableObject>() == null)
         {
             VRTK_Logger.Warn(VRTK_Logger.GetCommonMessage(VRTK_Logger.CommonMessageKeys.REQUIRED_COMPONENT_MISSING_FROM_GAMEOBJECT, "PanelMenuController", "VRTK_InteractableObject", "a parent"));
@@ -313,7 +317,6 @@ public class DescriptionMenuController : MonoBehaviour
         if (isGrabbed)
         {
             //HandlePanelMenuItemControllerVisibility(allPanelMenuItemController[currentPanelId]);
-
             if (currentPanelMenuItemController == null)
             {
                 currentPanelMenuItemController = allPanelMenuItemController[0];
@@ -325,8 +328,8 @@ public class DescriptionMenuController : MonoBehaviour
                 allPanelMenuItemController[currentPanelId].Hide(interactableObject);
                 currentPanelMenuItemController = null;
                 HideMenu(true);
-                currentPanelId = 0;
             }
+                        currentPanelId = 0;
 
             //Use it if you want a speculare touchpad press position// 
 
@@ -471,7 +474,7 @@ public class DescriptionMenuController : MonoBehaviour
         {
             //currentPanelMenuItemController.SwipeLeft(interactableObject);
 
-            if(allPanelMenuItemController[currentPanelId-1])
+            if( currentPanelId - 1 >= 0)
             {
                 currentPanelId -= 1;
                 soundEffect.PlayOneShot(swapEffect, 1F);
@@ -486,7 +489,7 @@ public class DescriptionMenuController : MonoBehaviour
         {
             //currentPanelMenuItemController.SwipeRight(interactableObject);
 
-            if (allPanelMenuItemController[currentPanelId + 1])
+            if (currentPanelId+1  < allPanelMenuItemController.Count)
             {
                 currentPanelId += 1;
                 soundEffect.PlayOneShot(swapEffect, 1F);

@@ -12,10 +12,10 @@ public class ControllerBtnHighlightHelp : MonoBehaviour
     private VRTK_ControllerHighlighter highligher;
     private VRTK_ControllerEvents events;
     private Color highlightColor = Color.yellow;
-    private Color pulseColor = Color.black;
-    private Color currentPulseColor;
+    //private Color pulseColor = Color.black;
+    //private Color currentPulseColor;
     private float highlightTimer = 0.5f;
-    private float pulseTimer = 0.75f;
+    //private float pulseTimer = 0.75f;
     private float dimOpacity = 0.8f;
     private float defaultOpacity = 1f;
     private bool highlighted;
@@ -33,7 +33,7 @@ public class ControllerBtnHighlightHelp : MonoBehaviour
         events = GetComponent<VRTK_ControllerEvents>();
         highligher = GetComponent<VRTK_ControllerHighlighter>();
         tooltips = GetComponentInChildren<VRTK_ControllerTooltips>();
-        currentPulseColor = pulseColor;
+        //currentPulseColor = pulseColor;
         highlighted = false;
         HelpToolTips = true;
 

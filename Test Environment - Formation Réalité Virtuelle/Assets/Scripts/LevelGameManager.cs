@@ -155,18 +155,18 @@ public class LevelGameManager : MonoBehaviour {
         }
 
         if(validSnapCount < currentValidSnapCount)
-        {   
-            Debug.Log("une pièce a été retirée");
-            Debug.Log("Pièce placée : " + validSnapCount + " sur " + snapDropZoneCount);
-            UpdateScoringText();
-            UpdateDebugSnapText("La pièce : " + lastInteractObjName + " a été placé.");
-        }
-        else if(validSnapCount > currentValidSnapCount)
         {
             Debug.Log("Une pièce a été placée");
             Debug.Log("Pièces retirée : " + validSnapCount + " sur " + snapDropZoneCount);
             UpdateScoringText();
             UpdateDebugSnapText("La pièce : " + lastInteractObjName + " a été retiré.");
+        }
+        else if(validSnapCount > currentValidSnapCount)
+        {
+            Debug.Log("une pièce a été retirée");
+            Debug.Log("Pièce placée : " + validSnapCount + " sur " + snapDropZoneCount);
+            UpdateScoringText();
+            UpdateDebugSnapText("La pièce : " + lastInteractObjName + " a été placé.");
         }
         
     }
