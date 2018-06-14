@@ -254,8 +254,7 @@ Prefab:
   m_IsPrefabParent: 0
 --- !u!4 &83982287 stripped
 Transform:
-  m_PrefabParentObject: {fileID: 4003545284436064, guid: 577fc91d32389f14f96471eb9ba4057a,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 83982286}
 --- !u!1001 &113269532
 Prefab:
@@ -344,12 +343,12 @@ Prefab:
     - target: {fileID: 114621569880080914, guid: c5326a2aedb5e0f4c84e98439108385d,
         type: 2}
       propertyPath: OnPushed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ChangeToScene2
+      value: ChangeScene
       objectReference: {fileID: 0}
     - target: {fileID: 114621569880080914, guid: c5326a2aedb5e0f4c84e98439108385d,
         type: 2}
       propertyPath: OnPushed.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114621569880080914, guid: c5326a2aedb5e0f4c84e98439108385d,
         type: 2}
@@ -415,6 +414,11 @@ Prefab:
         type: 2}
       propertyPath: OnPushed.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114621569880080914, guid: c5326a2aedb5e0f4c84e98439108385d,
+        type: 2}
+      propertyPath: OnPushed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Lvl2_Engine_2_Tuto
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c5326a2aedb5e0f4c84e98439108385d, type: 2}

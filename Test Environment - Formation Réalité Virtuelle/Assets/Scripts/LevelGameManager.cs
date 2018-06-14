@@ -15,8 +15,11 @@ public class LevelGameManager : MonoBehaviour {
     [Header("Lvl Game Settings")]
 
     public string snapDropTag;
+    public GameObject timerText;
     public GameObject scoringText;
     public GameObject debugSnapText;
+    public GameObject buttonStart;
+    public GameObject buttonEnd;
 
     [Header("Music Settings")]
     public AudioClip musicSound;
@@ -30,6 +33,8 @@ public class LevelGameManager : MonoBehaviour {
     private bool isFinished;
 
     private string lastInteractObjName;
+
+    private float startTime;
 
 
     // Use this for initialization
@@ -69,8 +74,10 @@ public class LevelGameManager : MonoBehaviour {
 
             if (motorAnim.GetCurrentAnimatorStateInfo(0).IsName("motor_end_placement"))
             {
+                buttonStart.SetActive(false);
                 MotorPresentation.SetActive(false);
                 MotorAssemblage.SetActive(true);
+                startTime = Time.time;
             }
         }
        
@@ -78,18 +85,18 @@ public class LevelGameManager : MonoBehaviour {
         {
             if (snapDropZoneCount != 0)
             {
-                
+                UpdateTimeText();
+
                 if (validSnapCount == snapDropZoneCount)
                 {
                     Debug.Log("GG !");
                     UpdateDebugSnapText("Félicitation !");
                     isFinished = true;
 
+                    buttonEnd.SetActive(true);
                     MotorPresentation.SetActive(true);
                     MotorAssemblage.SetActive(false);
                     MotorRunning();
-
-
                 }
             }
             else
@@ -180,5 +187,23 @@ public class LevelGameManager : MonoBehaviour {
     {
         debugSnapText.GetComponent<Text>().text = textUpdate;
 
+    }
+
+    private void UpdateTimeText()
+    {
+        float t = Time.time - startTime;
+        string minutes = ((int)t / 60).ToString();
+        if( minutes.Length == 1)
+        {
+            minutes = "0" + minutes;
+        }
+        string seconds = (t % 60).ToString("f2");
+        Debug.Log(seconds);
+        if( seconds.Length == 4)
+        {
+            seconds = "0" + seconds;
+        }
+
+        timerText.GetComponent<Text>().text = minutes + ":" + seconds;
     }
 }
