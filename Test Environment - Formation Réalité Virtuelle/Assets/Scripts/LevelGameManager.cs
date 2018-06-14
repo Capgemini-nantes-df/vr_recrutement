@@ -198,7 +198,6 @@ public class LevelGameManager : MonoBehaviour {
             minutes = "0" + minutes;
         }
         string seconds = (t % 60).ToString("f2");
-        Debug.Log(seconds);
         if( seconds.Length == 4)
         {
             seconds = "0" + seconds;
