@@ -357,6 +357,8 @@ GameObject:
   - component: {fileID: 114733522655727162}
   - component: {fileID: 114166284059716464}
   - component: {fileID: 114652610227743784}
+  - component: {fileID: 114440346503683996}
+  - component: {fileID: 114996135828972634}
   m_Layer: 0
   m_Name: Right_Controller
   m_TagString: Untagged
@@ -1285,6 +1287,8 @@ GameObject:
   - component: {fileID: 114438971419615812}
   - component: {fileID: 114451933833098808}
   - component: {fileID: 114097267829179138}
+  - component: {fileID: 114568083789223030}
+  - component: {fileID: 114364484082541634}
   m_Layer: 0
   m_Name: Left_Controller
   m_TagString: Untagged
@@ -2470,11 +2474,11 @@ MonoBehaviour:
   enableTeleport: 1
   targetListPolicy: {fileID: 114589023126241436}
   pointerRenderer: {fileID: 114975250649396452}
-  activationButton: 10
+  activationButton: 3
   holdButtonToActivate: 1
   activateOnEnable: 0
   activationDelay: 0
-  selectionButton: 10
+  selectionButton: 3
   selectOnPress: 0
   selectionDelay: 0
   selectAfterHoverDuration: 0
@@ -3022,6 +3026,58 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 2
+--- !u!114 &114364484082541634
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1795958265579836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e2e7c991ef4604498c54b06ede8b6fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnControllerStartTouchInteractableObject:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114568083789223030}
+        m_MethodName: StartHapticTouch
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: VRTK.UnityEventHelper.VRTK_InteractTouch_UnityEvents+ObjectInteractEvent,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnControllerTouchInteractableObject:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: VRTK.UnityEventHelper.VRTK_InteractTouch_UnityEvents+ObjectInteractEvent,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnControllerStartUntouchInteractableObject:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: VRTK.UnityEventHelper.VRTK_InteractTouch_UnityEvents+ObjectInteractEvent,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnControllerUntouchInteractableObject:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: VRTK.UnityEventHelper.VRTK_InteractTouch_UnityEvents+ObjectInteractEvent,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnControllerRigidbodyActivated:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: VRTK.UnityEventHelper.VRTK_InteractTouch_UnityEvents+ObjectInteractEvent,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnControllerRigidbodyDeactivated:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: VRTK.UnityEventHelper.VRTK_InteractTouch_UnityEvents+ObjectInteractEvent,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!114 &114384451112447022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3218,6 +3274,20 @@ MonoBehaviour:
   customCursor: {fileID: 0}
   validLocationObject: {fileID: 0}
   invalidLocationObject: {fileID: 0}
+--- !u!114 &114440346503683996
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1217108775905366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b28a421ce8edb174caa822c5411ea1c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strengthOnTouch: 0.4
+  durationOnTouch: 0.01
+  intervalOnTouch: 0.05
 --- !u!114 &114451933833098808
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3230,6 +3300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tooltipsOnlyOneTime: 1
+  noTooltipsMod: 0
 --- !u!114 &114468057935242800
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3263,11 +3334,11 @@ MonoBehaviour:
   enableTeleport: 1
   targetListPolicy: {fileID: 114589023126241436}
   pointerRenderer: {fileID: 114439930171648856}
-  activationButton: 10
+  activationButton: 3
   holdButtonToActivate: 1
   activateOnEnable: 0
   activationDelay: 0
-  selectionButton: 10
+  selectionButton: 3
   selectOnPress: 0
   selectionDelay: 0
   selectAfterHoverDuration: 0
@@ -3454,7 +3525,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activationButton: 0
   activationMode: 2
-  selectionButton: 10
+  selectionButton: 3
   clickMethod: 0
   attemptClickOnDeactivate: 0
   clickAfterHoverDuration: 0
@@ -3575,6 +3646,20 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 2
+--- !u!114 &114568083789223030
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1795958265579836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b28a421ce8edb174caa822c5411ea1c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strengthOnTouch: 0.4
+  durationOnTouch: 0.01
+  intervalOnTouch: 0.05
 --- !u!114 &114572750682752474
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4339,6 +4424,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tooltipsOnlyOneTime: 1
+  noTooltipsMod: 0
 --- !u!114 &114802593732584656
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4849,7 +4935,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activationButton: 0
   activationMode: 2
-  selectionButton: 10
+  selectionButton: 3
   clickMethod: 0
   attemptClickOnDeactivate: 0
   clickAfterHoverDuration: 0
@@ -5019,6 +5105,58 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 2
+--- !u!114 &114996135828972634
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1217108775905366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e2e7c991ef4604498c54b06ede8b6fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnControllerStartTouchInteractableObject:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114440346503683996}
+        m_MethodName: StartHapticTouch
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: VRTK.UnityEventHelper.VRTK_InteractTouch_UnityEvents+ObjectInteractEvent,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnControllerTouchInteractableObject:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: VRTK.UnityEventHelper.VRTK_InteractTouch_UnityEvents+ObjectInteractEvent,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnControllerStartUntouchInteractableObject:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: VRTK.UnityEventHelper.VRTK_InteractTouch_UnityEvents+ObjectInteractEvent,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnControllerUntouchInteractableObject:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: VRTK.UnityEventHelper.VRTK_InteractTouch_UnityEvents+ObjectInteractEvent,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnControllerRigidbodyActivated:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: VRTK.UnityEventHelper.VRTK_InteractTouch_UnityEvents+ObjectInteractEvent,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnControllerRigidbodyDeactivated:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: VRTK.UnityEventHelper.VRTK_InteractTouch_UnityEvents+ObjectInteractEvent,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!114 &114996807168332222
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -46,6 +46,12 @@ public class MenuToggleScript : MonoBehaviour {
 
     private void ControllerEvents_ButtonTwoReleased(object sender, ControllerInteractionEventArgs e)
     {
+        HideShowMenu();
+       
+    }
+
+    public void HideShowMenu()
+    {
         pauseMenuState = !pauseMenuState;
         pauseMenu.SetActive(pauseMenuState);
 
@@ -92,6 +98,6 @@ public class MenuToggleScript : MonoBehaviour {
             rightController.GetComponent<VRTK_InteractGrab>().enabled = true;
             rightController.GetComponent<VRTK_InteractUse>().enabled = true;
         }
-       
     }
+
 }
