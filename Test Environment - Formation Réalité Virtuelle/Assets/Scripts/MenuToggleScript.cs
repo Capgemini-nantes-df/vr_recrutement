@@ -53,21 +53,22 @@ public class MenuToggleScript : MonoBehaviour {
     public void HideShowMenu()
     {
         pauseMenuState = !pauseMenuState;
-        pauseMenu.SetActive(pauseMenuState);
+        
 
-        //leftController.GetComponent<VRTK_BezierPointerRenderer>().enabled = !pauseMenuState;
-        leftController.GetComponent<VRTK_Pointer>().enabled = pauseMenuState;
-        leftController.GetComponent<VRTK_StraightPointerRenderer>().enabled = pauseMenuState;
-
-        //rightController.GetComponent<VRTK_BezierPointerRenderer>().enabled = !pauseMenuState;
-        rightController.GetComponent<VRTK_StraightPointerRenderer>().enabled = pauseMenuState;
-        rightController.GetComponent<VRTK_Pointer>().enabled = pauseMenuState;
-
-        left_VRTK_Pointer = leftController.GetComponent<VRTK_Pointer>();
-        right_VRTK_Pointer = rightController.GetComponent<VRTK_Pointer>();
 
         if (pauseMenuState == true)
         {
+            leftController.GetComponent<VRTK_Pointer>().enabled = true;
+            leftController.GetComponent<VRTK_StraightPointerRenderer>().enabled = true;
+
+            rightController.GetComponent<VRTK_StraightPointerRenderer>().enabled = true;
+            rightController.GetComponent<VRTK_Pointer>().enabled = true;
+
+            left_VRTK_Pointer = leftController.GetComponent<VRTK_Pointer>();
+            right_VRTK_Pointer = rightController.GetComponent<VRTK_Pointer>();
+
+            pauseMenu.SetActive(true);
+
             left_VRTK_Pointer.pointerRenderer = leftController.GetComponent<VRTK_StraightPointerRenderer>();
             left_VRTK_Pointer.enableTeleport = false;
 
@@ -84,6 +85,20 @@ public class MenuToggleScript : MonoBehaviour {
         }
         else
         {
+            if(pauseMenu.activeSelf == false)
+            {
+                pauseMenuState = !pauseMenuState;
+                return;
+            }
+
+            pauseMenu.SetActive(false);
+
+            leftController.GetComponent<VRTK_Pointer>().enabled = false;
+            leftController.GetComponent<VRTK_StraightPointerRenderer>().enabled = false;
+
+            rightController.GetComponent<VRTK_StraightPointerRenderer>().enabled = false;
+            rightController.GetComponent<VRTK_Pointer>().enabled = false;
+
             left_VRTK_Pointer.pointerRenderer = leftController.GetComponent<VRTK_BezierPointerRenderer>();
             left_VRTK_Pointer.enableTeleport = true;
 
@@ -98,6 +113,8 @@ public class MenuToggleScript : MonoBehaviour {
             rightController.GetComponent<VRTK_InteractGrab>().enabled = true;
             rightController.GetComponent<VRTK_InteractUse>().enabled = true;
         }
+
+        
     }
 
 }
