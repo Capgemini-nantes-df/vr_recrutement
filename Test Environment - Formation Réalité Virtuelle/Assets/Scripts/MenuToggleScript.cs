@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using VRTK;
 
 public class MenuToggleScript : MonoBehaviour {
@@ -19,6 +20,7 @@ public class MenuToggleScript : MonoBehaviour {
 
     private VRTK_ControllerEvents leftControllerEvents;
     private VRTK_ControllerEvents rightControllerEvents;
+
 
     // Use this for initialization
     void Start()
@@ -53,8 +55,6 @@ public class MenuToggleScript : MonoBehaviour {
     public void HideShowMenu()
     {
         pauseMenuState = !pauseMenuState;
-        
-
 
         if (pauseMenuState == true)
         {
@@ -85,15 +85,21 @@ public class MenuToggleScript : MonoBehaviour {
         }
         else
         {
-            if(pauseMenu.activeSelf == false)
-            {
-                pauseMenuState = !pauseMenuState;
-                return;
-            }
-
             pauseMenu.SetActive(false);
 
-            leftController.GetComponent<VRTK_Pointer>().enabled = false;
+            pauseMenu.transform.GetChild(0).gameObject.SetActive(true);
+
+            int nbrChilds = pauseMenu.transform.childCount;
+            int i = 1;
+
+            while (i < nbrChilds)
+            {
+                pauseMenu.transform.GetChild(i).gameObject.SetActive(false);
+                i++;
+            }
+
+
+                leftController.GetComponent<VRTK_Pointer>().enabled = false;
             leftController.GetComponent<VRTK_StraightPointerRenderer>().enabled = false;
 
             rightController.GetComponent<VRTK_StraightPointerRenderer>().enabled = false;
