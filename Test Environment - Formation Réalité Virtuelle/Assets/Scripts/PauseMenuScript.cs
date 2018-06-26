@@ -17,19 +17,4 @@ public class PauseMenuScript : MonoBehaviour {
         SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
     }
 
-    public void ChangeToSceneTuto()
-    {
-        SceneManager.LoadScene("Tutoriel_TestZone1", LoadSceneMode.Single);
-    }
-
-    public void ChangeToScene1()
-    {
-        SceneManager.LoadScene("Lvl1_Engine_1", LoadSceneMode.Single);
-    }
-
-    public void ChangeToScene2()
-    {
-        SceneManager.LoadScene("Lvl2_Engine_2", LoadSceneMode.Single);
-    }
-
 }
