@@ -1,18 +1,17 @@
 fileFormatVersion: 2
-guid: 0e9aed028472ba748b3018936cd8618a
-timeCreated: 1529920438
+guid: 2c13082f0d1e4da49ba17fdb3c93f11c
+timeCreated: 1530260086
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: 0
-    100002: //RootNode
-    400000: 0
-    400002: //RootNode
-    2100000: No Name
-    2300000: 0
-    3300000: 0
-    4300000: 0
+    100000: //RootNode
+    400000: //RootNode
+    2100000: zanotta_leonard
+    2100002: zanotta_leonard1
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: zanotta_l
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -51,7 +50,7 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0

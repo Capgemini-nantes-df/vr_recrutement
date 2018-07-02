@@ -7,6 +7,7 @@ public class SpawnerBox : MonoBehaviour {
 
     public GameObject objectToSpawn;
     public GameObject stuffInTheBox;
+    public GameObject grabbablePistons;
     public float spawnDelay = 1f;
     public int maxSpawn = 8;
 
@@ -26,8 +27,10 @@ public class SpawnerBox : MonoBehaviour {
         {
             stuffInTheBox.transform.GetChild(count).gameObject.SetActive(false);
 
-            GameObject newObject = Instantiate(objectToSpawn);
-            grabbingController.GetComponent<VRTK_InteractTouch>().ForceTouch(newObject);
+            //for instantiate a clone of a prefab gameobject
+            //GameObject newObject = Instantiate(objectToSpawn);
+
+            grabbingController.GetComponent<VRTK_InteractTouch>().ForceTouch(grabbablePistons.transform.GetChild(count).gameObject);
             grabbingController.AttemptGrab();
             spawnDelayTimer = Time.time + spawnDelay;
             count += 1;

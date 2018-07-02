@@ -1,18 +1,54 @@
 fileFormatVersion: 2
-guid: 0e9aed028472ba748b3018936cd8618a
-timeCreated: 1529920438
+guid: d1943c91be393ca4cac00e33c973a9ba
+timeCreated: 1530264977
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: 0
-    100002: //RootNode
-    400000: 0
-    400002: //RootNode
-    2100000: No Name
-    2300000: 0
-    3300000: 0
-    4300000: 0
+    100000: Box
+    100002: Box_labeled
+    100004: //RootNode
+    100006: Covered_boxes
+    100008: Covered_boxes1
+    100010: Pallet
+    100012: Pallet1
+    100014: Small_box
+    400000: Box
+    400002: Box_labeled
+    400004: //RootNode
+    400006: Covered_boxes
+    400008: Covered_boxes1
+    400010: Pallet
+    400012: Pallet1
+    400014: Small_box
+    2100000: BoxMat
+    2100002: Box_labeledMat
+    2100004: Covered_boxesMat
+    2100006: Covered_boxes1Mat
+    2100008: PalletMat
+    2100010: Pallet1Mat
+    2100012: Small_boxMat
+    2300000: Box
+    2300002: Box_labeled
+    2300004: Covered_boxes
+    2300006: Covered_boxes1
+    2300008: Pallet
+    2300010: Pallet1
+    2300012: Small_box
+    3300000: Box
+    3300002: Box_labeled
+    3300004: Covered_boxes
+    3300006: Covered_boxes1
+    3300008: Pallet
+    3300010: Pallet1
+    3300012: Small_box
+    4300000: Box
+    4300002: Box_labeled
+    4300004: Covered_boxes
+    4300006: Covered_boxes1
+    4300008: Pallet
+    4300010: Pallet1
+    4300012: Small_box
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -51,7 +87,7 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0

@@ -91,7 +91,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1290727651252828
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,6 +205,7 @@ GameObject:
   - component: {fileID: 114217230368270254}
   - component: {fileID: 114889880114218714}
   - component: {fileID: 114551990014094344}
+  - component: {fileID: 114129696666678560}
   m_Layer: 0
   m_Name: Piston
   m_TagString: motor2_Piston
@@ -918,6 +919,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'Maintenance :'
+--- !u!114 &114129696666678560
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1369196561960032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2feebb17174717645a6bad8dd30cc0b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  descPanel: {fileID: 0}
 --- !u!114 &114163534782628748
 MonoBehaviour:
   m_ObjectHideFlags: 1
