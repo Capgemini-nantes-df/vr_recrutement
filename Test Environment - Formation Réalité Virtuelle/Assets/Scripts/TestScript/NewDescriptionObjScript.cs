@@ -164,7 +164,7 @@ public class NewDescriptionObjScript : MonoBehaviour
         if (isGrabbed)
         {
             //Use it if you want a speculare touchpad press position// 
-            var pressPosition = CalculateTouchpadPressPosition();
+            //var pressPosition = CalculateTouchpadPressPosition();
 
             currentPanelId = 0;
 

@@ -398,7 +398,9 @@
             [InitializeOnLoadMethod]
             private static void ListenToPlayModeChanges()
             {
+#pragma warning disable CS0618 // Le type ou le membre est obsolète
                 EditorApplication.playmodeStateChanged += () =>
+#pragma warning restore CS0618 // Le type ou le membre est obsolète
                 {
                     if (EditorApplication.isPlayingOrWillChangePlaymode && !EditorApplication.isPlaying)
                     {

@@ -17,6 +17,10 @@ public class ElevatorBtnScript : MonoBehaviour {
 
     public Animator commandAnim;
     public LevelGameManager levelGameManager;
+    public GameObject command;
+
+    [Header("Sound Settings")]
+    public AudioSource downBtnEffect;
 
     protected VRTK_ControllerEvents controllerEvents;
     protected VRTK_PanelMenuItemController currentPanelMenuItemController;
@@ -160,6 +164,7 @@ public class ElevatorBtnScript : MonoBehaviour {
     public void DownBtnPushed()
     {
         commandAnim.SetBool("isDown", true);
+        downBtnEffect.Play();
     }
 
     protected virtual void DoTouchpadTouched(object sender, ControllerInteractionEventArgs e)

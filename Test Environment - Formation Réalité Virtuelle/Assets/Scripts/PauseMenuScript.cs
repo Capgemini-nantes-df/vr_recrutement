@@ -8,7 +8,6 @@ public class PauseMenuScript : MonoBehaviour {
     public void ResetScene()
     {
         Scene scene = SceneManager.GetActiveScene();
-        Debug.Log(scene);
         SceneManager.LoadScene(scene.name);
     }
 

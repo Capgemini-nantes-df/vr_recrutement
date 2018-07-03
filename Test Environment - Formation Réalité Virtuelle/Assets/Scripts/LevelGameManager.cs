@@ -24,6 +24,7 @@ public class LevelGameManager : MonoBehaviour {
     [Header("Music Settings")]
     public AudioClip musicSound;
     public string musicDiffuseTag;
+    public AudioSource victorySound;
 
     private GameObject[] allSnapDropZone;
     private GameObject[] allMusicDiffusers;
@@ -89,9 +90,10 @@ public class LevelGameManager : MonoBehaviour {
 
                 if (validSnapCount == snapDropZoneCount)
                 {
-                    Debug.Log("GG !");
                     UpdateDebugSnapText("Félicitation !");
                     isFinished = true;
+
+                    victorySound.Play();
 
                     buttonEnd.SetActive(true);
                     MotorPresentation.SetActive(true);
