@@ -17,6 +17,8 @@ public class NewDescriptionObjScript : MonoBehaviour
     }
 
     public GameObject descPanel;
+    public AudioSource swapEffectSource;
+    public AudioClip swapEffectClip;
 
     protected List<VRTK_PanelMenuItemController> allPanelMenuItemController;
     protected GameObject presentationPanel;
@@ -380,6 +382,7 @@ public class NewDescriptionObjScript : MonoBehaviour
             if (currentPanelId - 1 >= 0)
             {
                 currentPanelId -= 1;
+                swapEffectSource.PlayOneShot(swapEffectClip);
                 currentPanelMenuItemController.gameObject.SetActive(false);
                 currentPanelMenuItemController = allPanelMenuItemController[currentPanelId];
                 currentPanelMenuItemController.gameObject.SetActive(true);
@@ -396,6 +399,7 @@ public class NewDescriptionObjScript : MonoBehaviour
             if (currentPanelId + 1 < allPanelMenuItemController.Count)
             {
                 currentPanelId += 1;
+                swapEffectSource.PlayOneShot(swapEffectClip);
                 currentPanelMenuItemController.gameObject.SetActive(false);
                 currentPanelMenuItemController = allPanelMenuItemController[currentPanelId];
                 currentPanelMenuItemController.gameObject.SetActive(true);

@@ -18,16 +18,22 @@ public class ElevatorBtnScript : MonoBehaviour {
     public Animator commandAnim;
     public LevelGameManager levelGameManager;
     public GameObject command;
+    public Material baseMaterial;
 
     [Header("Sound Settings")]
     public AudioSource downBtnEffect;
+
+    [Header("Buttons Settings")]
+    public GameObject buttonUp;
+    public GameObject buttonDown;
+    public Material outlinedMaterialBtnDown;
 
     protected VRTK_ControllerEvents controllerEvents;
     protected VRTK_PanelMenuItemController currentPanelMenuItemController;
     protected GameObject interactableObject;
 
     // Swipe sensitivity / detection.
-    protected const float AngleTolerance = 30f;
+    protected const float AngleTolerance = 90f;
 
     protected readonly Vector2 xAxis = new Vector2(1, 0);
     protected readonly Vector2 yAxis = new Vector2(0, 1);
@@ -39,6 +45,8 @@ public class ElevatorBtnScript : MonoBehaviour {
     protected bool isPendingSwipeCheck = false;
     protected bool isGrabbed = false;
     protected bool isShown = false;
+
+    protected Material baseMaterialBtnDown;
 
     protected virtual void Awake()
     {
@@ -57,6 +65,9 @@ public class ElevatorBtnScript : MonoBehaviour {
 
         interactableObject.GetComponent<VRTK_InteractableObject>().InteractableObjectGrabbed += new InteractableObjectEventHandler(DoInteractableObjectIsGrabbed);
         interactableObject.GetComponent<VRTK_InteractableObject>().InteractableObjectUngrabbed += new InteractableObjectEventHandler(DoInteractableObjectIsUngrabbed);
+
+        baseMaterialBtnDown = buttonDown.GetComponent<MeshRenderer>().material;
+        GetComponent<VRTK_InteractableObject>().ToggleHighlight(false);
     }
 
     void Update()
@@ -68,7 +79,48 @@ public class ElevatorBtnScript : MonoBehaviour {
 
         if (commandAnim.GetCurrentAnimatorStateInfo(0).IsName("DownBtnPush"))
         {
+            downBtnEffect.Play();
+            levelGameManager.MotorMakeBegin();
             commandAnim.SetBool("isDown", false);
+        }
+
+        if (isGrabbed == true)
+        {
+            if (GetComponent<MeshRenderer>().material != baseMaterial)
+            {
+                GetComponent<MeshRenderer>().material = baseMaterial;
+            }
+
+            if (buttonDown.GetComponent<MeshRenderer>().material != outlinedMaterialBtnDown)
+            {
+                buttonDown.GetComponent<MeshRenderer>().material = outlinedMaterialBtnDown;
+            }
+            
+        }
+
+        if (isGrabbed == false)
+        {
+            buttonDown.GetComponent<MeshRenderer>().material = baseMaterialBtnDown;
+        }
+        
+    }
+
+    private void OnTriggerStay(Collider collider)
+    {
+        VRTK_InteractGrab grabbingController = (collider.gameObject.GetComponent<VRTK_InteractGrab>() ? collider.gameObject.GetComponent<VRTK_InteractGrab>() : collider.gameObject.GetComponentInParent<VRTK_InteractGrab>());
+        Rigidbody rb = GetComponent<Rigidbody>();
+
+        if (commandAnim.GetCurrentAnimatorStateInfo(0).IsName("EndDownPush"))
+        {
+            grabbingController.ForceRelease(false);
+            Destroy(GetComponent<VRTK_InteractableObject>());
+
+            GetComponent<MeshRenderer>().material = baseMaterial;
+
+            transform.rotation = Quaternion.identity;
+            rb.isKinematic = false;
+            rb.useGravity = false;
+            rb.freezeRotation = true;
         }
     }
 
@@ -140,8 +192,7 @@ public class ElevatorBtnScript : MonoBehaviour {
                     break;
 
                 case TouchpadPressPosition.Bottom:
-                    DownBtnPushed();
-                    levelGameManager.MotorMakeBegin();
+                    DownBtnPushed(); 
                     break;
 
                 /*case TouchpadPressPosition.Left:
@@ -164,7 +215,7 @@ public class ElevatorBtnScript : MonoBehaviour {
     public void DownBtnPushed()
     {
         commandAnim.SetBool("isDown", true);
-        downBtnEffect.Play();
+        
     }
 
     protected virtual void DoTouchpadTouched(object sender, ControllerInteractionEventArgs e)
@@ -241,5 +292,6 @@ public class ElevatorBtnScript : MonoBehaviour {
         }
         return targetDegree >= lowerBound && targetDegree <= upperBound;
     }
+
 
 }
