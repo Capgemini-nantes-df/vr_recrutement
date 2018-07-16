@@ -14,6 +14,8 @@ public class LevelGameManager : MonoBehaviour {
 
     [Header("Lvl Game Settings")]
 
+    public GameObject SteamVR_SDK;
+    public GameObject goText;
     public string snapDropTag;
     public GameObject timerText;
     public GameObject scoringText;
@@ -78,6 +80,8 @@ public class LevelGameManager : MonoBehaviour {
                 buttonStart.SetActive(false);
                 MotorPresentation.SetActive(false);
                 MotorAssemblage.SetActive(true);
+                goText.SetActive(true);
+                SteamVR_SDK.transform.position = new Vector3(SteamVR_SDK.transform.position.x, SteamVR_SDK.transform.position.y, SteamVR_SDK.transform.position.z +1.373f);
                 startTime = Time.time;
             }
         }

@@ -74,12 +74,12 @@ public class ElevatorBtnScript : MonoBehaviour {
     {
         if (commandAnim.GetCurrentAnimatorStateInfo(0).IsName("UpBtnPush"))
         {
+
             commandAnim.SetBool("isUp", false);
         }
 
         if (commandAnim.GetCurrentAnimatorStateInfo(0).IsName("DownBtnPush"))
         {
-            downBtnEffect.Play();
             levelGameManager.MotorMakeBegin();
             commandAnim.SetBool("isDown", false);
         }
@@ -188,10 +188,12 @@ public class ElevatorBtnScript : MonoBehaviour {
             switch (pressPosition)
             {
                 case TouchpadPressPosition.Top:
+                    downBtnEffect.Play();
                     UpBtnPushed();
                     break;
 
                 case TouchpadPressPosition.Bottom:
+                    downBtnEffect.Play();
                     DownBtnPushed(); 
                     break;
 
