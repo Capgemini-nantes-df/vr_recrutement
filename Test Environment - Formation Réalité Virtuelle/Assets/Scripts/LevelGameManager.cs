@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,11 +18,14 @@ public class LevelGameManager : MonoBehaviour {
     public GameObject SteamVR_SDK;
     public GameObject goText;
     public string snapDropTag;
-    public GameObject timerText;
-    public GameObject scoringText;
-    public GameObject debugSnapText;
     public GameObject buttonStart;
     public GameObject buttonEnd;
+
+    [Header("Tablet Score Settings")]
+    public GameObject panelScore;
+    public TextMeshPro timerText;
+    public TextMeshPro scoringText;
+    public TextMeshPro debugSnapText;
 
     [Header("Music Settings")]
     public AudioClip musicSound;
@@ -81,6 +85,7 @@ public class LevelGameManager : MonoBehaviour {
                 MotorPresentation.SetActive(false);
                 MotorAssemblage.SetActive(true);
                 goText.SetActive(true);
+                panelScore.SetActive(true);
                 SteamVR_SDK.transform.position = new Vector3(SteamVR_SDK.transform.position.x, SteamVR_SDK.transform.position.y, SteamVR_SDK.transform.position.z +1.373f);
                 startTime = Time.time;
             }
@@ -186,12 +191,12 @@ public class LevelGameManager : MonoBehaviour {
 
     private void UpdateScoringText()
     {
-        scoringText.GetComponent<Text>().text = validSnapCount + "/" + snapDropZoneCount;
+        scoringText.text = validSnapCount + "/" + snapDropZoneCount;
     }
 
     private void UpdateDebugSnapText(string textUpdate)
     {
-        debugSnapText.GetComponent<Text>().text = textUpdate;
+        debugSnapText.text = textUpdate;
 
     }
 
@@ -209,6 +214,6 @@ public class LevelGameManager : MonoBehaviour {
             seconds = "0" + seconds;
         }
 
-        timerText.GetComponent<Text>().text = minutes + ":" + seconds;
+        timerText.text = minutes + ":" + seconds;
     }
 }
