@@ -35,6 +35,7 @@ public class SpawnerBox : MonoBehaviour {
             GameObject currentObj = pistonsInTheBox.transform.GetChild(0).gameObject;
             currentObj.transform.SetParent(pistonsOutOfTheBox.transform);
 
+            currentObj.SetActive(true);
             currentObj.GetComponent<MeshCollider>().enabled = true;
             currentObj.GetComponent<Rigidbody>().useGravity = true;
 
@@ -47,6 +48,27 @@ public class SpawnerBox : MonoBehaviour {
         }
 
         
+    }
+
+    private void PutOnePiston(GameObject piston)
+    {
+        piston.GetComponent<RespawnObject>().RespawnToStart();
+        count -= 1;
+        stuffInTheBox.transform.GetChild(count).gameObject.SetActive(true);
+        piston.transform.SetParent(pistonsInTheBox.transform);
+        piston.SetActive(false);
+        piston.GetComponent<MeshCollider>().enabled = false;
+        piston.GetComponent<Rigidbody>().useGravity = false;
+
+    }
+
+    public void RespawnPistonsOutOfTheBox()
+    {
+        int childCount = pistonsOutOfTheBox.transform.childCount;
+        for(int i = 0; i<childCount; i++)
+        {
+                PutOnePiston(pistonsOutOfTheBox.transform.GetChild(0).gameObject);  
+        }
     }
 
     private bool CanGrab(VRTK_InteractGrab grabbingController)

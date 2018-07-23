@@ -39,11 +39,18 @@ public class MenuToggleScript : MonoBehaviour {
 
     private void OnDisable()
     {
-        leftControllerEvents = leftController.GetComponent<VRTK_ControllerEvents>();
-        leftControllerEvents.ButtonTwoReleased -= ControllerEvents_ButtonTwoReleased;
-
-        rightControllerEvents = rightController.GetComponent<VRTK_ControllerEvents>();
-        rightControllerEvents.ButtonTwoReleased -= ControllerEvents_ButtonTwoReleased;
+        if(leftControllerEvents != null)
+        {
+            leftControllerEvents = leftController.GetComponent<VRTK_ControllerEvents>();
+            leftControllerEvents.ButtonTwoReleased -= ControllerEvents_ButtonTwoReleased;
+        }
+        
+        if(rightControllerEvents != null)
+        {
+            rightControllerEvents = rightController.GetComponent<VRTK_ControllerEvents>();
+            rightControllerEvents.ButtonTwoReleased -= ControllerEvents_ButtonTwoReleased;
+        }
+        
     }
 
     private void ControllerEvents_ButtonTwoReleased(object sender, ControllerInteractionEventArgs e)

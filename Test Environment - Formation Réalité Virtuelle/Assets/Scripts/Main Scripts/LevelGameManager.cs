@@ -3,24 +3,33 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using VRTK;
 
 public class LevelGameManager : MonoBehaviour {
 
     [Header("Motor Animation Settings")]
-
     public Animator motorAnim;
 
     public GameObject MotorPresentation;
     public GameObject MotorAssemblage;
 
     [Header("Lvl Game Settings")]
-
     public GameObject SteamVR_SDK;
     public GameObject goText;
     public GameObject tvHelpPanel;
     public string snapDropTag;
     public GameObject buttonStart;
+
+
+    [Header("End Game Settings")]
+    public GameObject tabletScore;
+    public Transform endTransformTablet;
+    public GameObject tvEndPanel;
     public GameObject buttonEnd;
+
+    [Header("Respawns Settings")]
+    public GameObject toSnap;
+    public SpawnerBox spawnerBox;
 
     [Header("Tablet Score Settings")]
     public GameObject panelScore;
@@ -32,6 +41,10 @@ public class LevelGameManager : MonoBehaviour {
     public AudioClip musicSound;
     public string musicDiffuseTag;
     public AudioSource victorySound;
+
+    [Header("Controllers Settings")]
+    public VRTK_InteractGrab leftController;
+    public VRTK_InteractGrab rightController;
 
     private GameObject[] allSnapDropZone;
     private GameObject[] allMusicDiffusers;
@@ -106,10 +119,34 @@ public class LevelGameManager : MonoBehaviour {
 
                     victorySound.Play();
 
-                    buttonEnd.SetActive(true);
+                    //buttonEnd.SetActive(true);
+
                     MotorPresentation.SetActive(true);
                     MotorAssemblage.SetActive(false);
+
+                    //Run Motor running Animation 
                     MotorRunning();
+
+                    ///Enable TV End Panel///
+                    for (int i = 0; i < tvEndPanel.transform.parent.transform.childCount; i++)
+                    {
+                        if (tvEndPanel.transform.parent.transform.GetChild(i).gameObject.activeSelf == true)
+                        {
+                            tvEndPanel.transform.parent.transform.GetChild(i).gameObject.SetActive(false);
+                        }
+                    }
+                    tvEndPanel.SetActive(true);
+
+                    ///change position of tablet Score
+                    leftController.ForceRelease(false);
+                    rightController.ForceRelease(false);
+                    tabletScore.transform.position = endTransformTablet.position;
+                    tabletScore.transform.rotation = endTransformTablet.rotation;
+                }
+
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    RespawnAllObjNotSnapped();
                 }
             }
             else
@@ -139,26 +176,6 @@ public class LevelGameManager : MonoBehaviour {
     {
         motorAnim.SetBool("isRunning", true);
     }
-
-    /*public void addOneCompletedSpot(string name)
-    {
-        lastInteractObjName = name;
-        Debug.Log("Une pièce a été placée");
-        validSnapCount += 1;
-        Debug.Log("Pièce placée : " + validSnapCount + " sur " + snapDropZoneCount);
-        UpdateScoringText();
-        UpdateDebugSnapText(true);
-    }*/
-
-    /*public void supprOneCompletedSpot(string name)
-    {
-        lastInteractObjName = name;
-        Debug.Log("une pièce a été retirée");
-        validSnapCount -= 1;
-        Debug.Log("Pièce retirée : " + validSnapCount );
-        UpdateScoringText();
-        UpdateDebugSnapText(false);
-    }*/
 
     public void UpdateNumberCompletedSpot(string name)
     {
@@ -217,5 +234,15 @@ public class LevelGameManager : MonoBehaviour {
         }
 
         timerText.text = minutes + ":" + seconds;
+    }
+
+    public void RespawnAllObjNotSnapped()
+    {
+        foreach(RespawnObject child in toSnap.GetComponentsInChildren<RespawnObject>())
+        {
+            child.RespawnToStart();
+        }
+
+        spawnerBox.RespawnPistonsOutOfTheBox();
     }
 }

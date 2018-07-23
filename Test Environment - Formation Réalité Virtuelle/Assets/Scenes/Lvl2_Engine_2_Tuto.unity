@@ -1016,6 +1016,8 @@ MonoBehaviour:
   objectToSpawn: {fileID: 1369196561960032, guid: 9aedc8897849064418c843d4805c231f,
     type: 2}
   stuffInTheBox: {fileID: 1820994216}
+  pistonsInTheBox: {fileID: 0}
+  pistonsOutOfTheBox: {fileID: 0}
   spawnDelay: 0.5
   maxSpawn: 0
 --- !u!54 &27270200
@@ -1186,11 +1188,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 33862665}
   m_Mesh: {fileID: 4300692, guid: c143ed69aa7c0964a91d2296da7090ad, type: 3}
---- !u!1 &36954181 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1198608762145862, guid: 1799965b28bf72144b57d635ee102157,
-    type: 2}
-  m_PrefabInternal: {fileID: 949050967}
 --- !u!1 &37545872
 GameObject:
   m_ObjectHideFlags: 0
@@ -19877,6 +19874,11 @@ Prefab:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114593595381838024, guid: ae8c322e0511797489ce23f45ca60cf4,
+        type: 2}
+      propertyPath: loadLevel
+      value: 
+      objectReference: {fileID: 2046740374}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ae8c322e0511797489ce23f45ca60cf4, type: 2}
   m_IsPrefabParent: 0
@@ -39767,14 +39769,19 @@ MonoBehaviour:
   motorAnim: {fileID: 1516836287}
   MotorPresentation: {fileID: 1914002128}
   MotorAssemblage: {fileID: 1867443052}
+  SteamVR_SDK: {fileID: 0}
+  goText: {fileID: 0}
+  tvHelpPanel: {fileID: 0}
   snapDropTag: SnapDropZone
-  timerText: {fileID: 1945301222}
-  scoringText: {fileID: 1985292831}
-  debugSnapText: {fileID: 36954181}
   buttonStart: {fileID: 1353098124}
   buttonEnd: {fileID: 1113844171}
+  panelScore: {fileID: 0}
+  timerText: {fileID: 0}
+  scoringText: {fileID: 0}
+  debugSnapText: {fileID: 0}
   musicSound: {fileID: 8300000, guid: e8846de9250438948912ef779c9f54f1, type: 3}
   musicDiffuseTag: musicDiffuse
+  victorySound: {fileID: 0}
 --- !u!1 &1047764858
 GameObject:
   m_ObjectHideFlags: 0
@@ -77128,11 +77135,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1945301222 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1151085447371230, guid: 1799965b28bf72144b57d635ee102157,
-    type: 2}
-  m_PrefabInternal: {fileID: 949050967}
 --- !u!1 &1949992198
 GameObject:
   m_ObjectHideFlags: 0
@@ -78187,11 +78189,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4972952187461830, guid: 2734249cc55153244a1a2c02b7b287d0,
     type: 2}
   m_PrefabInternal: {fileID: 676354829}
---- !u!1 &1985292831 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1822056604324062, guid: 1799965b28bf72144b57d635ee102157,
-    type: 2}
-  m_PrefabInternal: {fileID: 949050967}
 --- !u!1 &1986685668
 GameObject:
   m_ObjectHideFlags: 0
@@ -80538,6 +80535,73 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2046524369}
+--- !u!1 &2046740373
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2046740375}
+  - component: {fileID: 2046740374}
+  m_Layer: 0
+  m_Name: LoadScreen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2046740374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2046740373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5a6a70209b6e6345bfe18b02314a54e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelName: 
+  internalProcessPath: 
+  internalProcessArgs: 
+  loadAdditive: 0
+  loadAsync: 1
+  loadingScreen: {fileID: 0}
+  progressBarEmpty: {fileID: 0}
+  progressBarFull: {fileID: 0}
+  loadingScreenWidthInMeters: 6
+  progressBarWidthInMeters: 3
+  loadingScreenDistance: 0
+  loadingScreenTransform: {fileID: 0}
+  progressBarTransform: {fileID: 0}
+  front: {fileID: 0}
+  back: {fileID: 0}
+  left: {fileID: 0}
+  right: {fileID: 0}
+  top: {fileID: 0}
+  bottom: {fileID: 0}
+  backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+  showGrid: 0
+  fadeOutTime: 0.5
+  fadeInTime: 0.5
+  postLoadSettleTime: 0
+  loadingScreenFadeInTime: 1
+  loadingScreenFadeOutTime: 0.25
+  autoTriggerOnEnable: 0
+--- !u!4 &2046740375
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2046740373}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.004438758, y: 1.1454103, z: -0.5564418}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2047087032
 GameObject:
   m_ObjectHideFlags: 0

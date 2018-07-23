@@ -45,6 +45,9 @@ public class TVDescriptionScript : MonoBehaviour
     protected bool isTrackingSwipe = false;
     protected bool isPendingSwipeCheck = false;
 
+    protected int objectsIsGrabbed = 0;
+    protected GameObject previousDescObjPanel;
+
 
     protected virtual void Start()
     {
@@ -60,7 +63,6 @@ public class TVDescriptionScript : MonoBehaviour
             CalculateSwipeAction();
         }
     }
-
 
     protected virtual void BindControllerEvents()
     {
@@ -78,6 +80,12 @@ public class TVDescriptionScript : MonoBehaviour
 
     public void ActiveObjDescPanel(GameObject descObjPanel)
     {
+        objectsIsGrabbed += 1;
+        if(objectsIsGrabbed == 2)
+        {
+            previousDescObjPanel = currentDescObjPanel;
+        }
+
         currentDescObjPanel = descObjPanel;
 
         allPanelMenuItemController = new List<VRTK_PanelMenuItemController>();
@@ -109,9 +117,47 @@ public class TVDescriptionScript : MonoBehaviour
         currentPanelMenuItemController.gameObject.SetActive(true);
     }
 
-    public virtual void DesactiveObjDescPanel()
+    public virtual void DesactiveObjDescPanel(GameObject descObjPanel)
     {
         currentPanelId = 0;
+        objectsIsGrabbed -= 1;
+
+        if(objectsIsGrabbed ==  1)
+        {
+            if(descObjPanel == currentDescObjPanel)
+            {
+                currentDescObjPanel = previousDescObjPanel;
+            } 
+
+            allPanelMenuItemController = new List<VRTK_PanelMenuItemController>();
+
+            for (int i = 0; i < currentDescObjPanel.transform.GetChild(0).gameObject.transform.childCount; i++)
+            {
+                allPanelMenuItemController.Add(currentDescObjPanel.transform.GetChild(0).gameObject.transform.GetChild(i).gameObject.GetComponent<VRTK_PanelMenuItemController>());
+            }
+
+            for (int i = 0; i < presentationPanel.transform.childCount; i++)
+            {
+                if (presentationPanel.transform.GetChild(i).gameObject.activeSelf == true)
+                {
+                    presentationPanel.transform.GetChild(i).gameObject.SetActive(false);
+                }
+            }
+
+            for (int i = 1; i < allPanelMenuItemController.Count; i++)
+            {
+                if (allPanelMenuItemController[i].gameObject.activeSelf == true)
+                {
+                    allPanelMenuItemController[i].gameObject.SetActive(false);
+                }
+            }
+
+
+            currentPanelMenuItemController = allPanelMenuItemController[0];
+            currentDescObjPanel.SetActive(true);
+            currentPanelMenuItemController.gameObject.SetActive(true);
+        }
+        
     }
 
     protected virtual void DoTouchpadPress(object sender, ControllerInteractionEventArgs e)

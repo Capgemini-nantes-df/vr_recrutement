@@ -705,12 +705,12 @@ Prefab:
     - target: {fileID: 114621569880080914, guid: c5326a2aedb5e0f4c84e98439108385d,
         type: 2}
       propertyPath: OnPushed.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114527578599392958, guid: c5326a2aedb5e0f4c84e98439108385d,
         type: 2}
       propertyPath: events.OnPush.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4691823303814500, guid: c5326a2aedb5e0f4c84e98439108385d, type: 2}
       propertyPath: m_LocalPosition.x
@@ -747,12 +747,12 @@ Prefab:
     - target: {fileID: 114621569880080914, guid: c5326a2aedb5e0f4c84e98439108385d,
         type: 2}
       propertyPath: OnPushed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
+      value: ChangeScene
       objectReference: {fileID: 0}
     - target: {fileID: 114621569880080914, guid: c5326a2aedb5e0f4c84e98439108385d,
         type: 2}
       propertyPath: OnPushed.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114621569880080914, guid: c5326a2aedb5e0f4c84e98439108385d,
         type: 2}
@@ -788,7 +788,7 @@ Prefab:
         type: 2}
       propertyPath: OnPushed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 728610813}
+      objectReference: {fileID: 771435148}
     - target: {fileID: 114621569880080914, guid: c5326a2aedb5e0f4c84e98439108385d,
         type: 2}
       propertyPath: OnPushed.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -908,7 +908,7 @@ Prefab:
         type: 2}
       propertyPath: events.OnPush.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 771435148}
     - target: {fileID: 114527578599392958, guid: c5326a2aedb5e0f4c84e98439108385d,
         type: 2}
       propertyPath: events.OnPush.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -923,6 +923,11 @@ Prefab:
         type: 2}
       propertyPath: events.OnPush.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: Tutoriel_TestZone1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114621569880080914, guid: c5326a2aedb5e0f4c84e98439108385d,
+        type: 2}
+      propertyPath: OnPushed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Tutoriel_Intro
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c5326a2aedb5e0f4c84e98439108385d, type: 2}
@@ -1129,6 +1134,11 @@ Prefab:
       propertyPath: gameObjectToFollow
       value: 
       objectReference: {fileID: 128299408}
+    - target: {fileID: 114593595381838024, guid: ae8c322e0511797489ce23f45ca60cf4,
+        type: 2}
+      propertyPath: loadLevel
+      value: 
+      objectReference: {fileID: 961585023}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ae8c322e0511797489ce23f45ca60cf4, type: 2}
   m_IsPrefabParent: 0
@@ -1137,6 +1147,12 @@ GameObject:
   m_PrefabParentObject: {fileID: 1097577719913320, guid: ae8c322e0511797489ce23f45ca60cf4,
     type: 2}
   m_PrefabInternal: {fileID: 771435146}
+--- !u!114 &771435148 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114593595381838024, guid: ae8c322e0511797489ce23f45ca60cf4,
+    type: 2}
+  m_PrefabInternal: {fileID: 771435146}
+  m_Script: {fileID: 11500000, guid: 8127709ca5043cb4ba39cd38706fb33f, type: 3}
 --- !u!1001 &867190311
 Prefab:
   m_ObjectHideFlags: 0
@@ -1628,6 +1644,73 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0cc17fb2b3bf6904eb72087de28e1a61, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &961585022
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 961585024}
+  - component: {fileID: 961585023}
+  m_Layer: 0
+  m_Name: LoadScreen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &961585023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 961585022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5a6a70209b6e6345bfe18b02314a54e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelName: 
+  internalProcessPath: 
+  internalProcessArgs: 
+  loadAdditive: 0
+  loadAsync: 1
+  loadingScreen: {fileID: 0}
+  progressBarEmpty: {fileID: 0}
+  progressBarFull: {fileID: 0}
+  loadingScreenWidthInMeters: 6
+  progressBarWidthInMeters: 3
+  loadingScreenDistance: 0
+  loadingScreenTransform: {fileID: 0}
+  progressBarTransform: {fileID: 0}
+  front: {fileID: 0}
+  back: {fileID: 0}
+  left: {fileID: 0}
+  right: {fileID: 0}
+  top: {fileID: 0}
+  bottom: {fileID: 0}
+  backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+  showGrid: 0
+  fadeOutTime: 0.5
+  fadeInTime: 0.5
+  postLoadSettleTime: 0
+  loadingScreenFadeInTime: 1
+  loadingScreenFadeOutTime: 0.25
+  autoTriggerOnEnable: 0
+--- !u!4 &961585024
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 961585022}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.004438758, y: 1.1454103, z: -0.5564418}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1046473484
 GameObject:
   m_ObjectHideFlags: 0

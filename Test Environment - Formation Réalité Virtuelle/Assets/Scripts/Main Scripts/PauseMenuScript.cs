@@ -5,15 +5,23 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenuScript : MonoBehaviour {
 
+    public SteamVR_LoadLevel loadLevel;
+
     public void ResetScene()
     {
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
     }
 
+
     public void ChangeScene(string sceneName)
     {
-        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+        ///Default LoadLevel///
+        //SteamVR_LoadLevel.Begin(sceneName); 
+
+        ///Custom LoadLevel///
+        loadLevel.levelName = sceneName;
+        loadLevel.Trigger();
     }
 
 }

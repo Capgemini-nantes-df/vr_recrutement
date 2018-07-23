@@ -110,7 +110,10 @@ public class TabletObjectifScript : MonoBehaviour {
     {
         tvCountdownPanel.SetActive(false);
         levelGameManager.MotorMakeBegin();
-        grabbingController.ForceRelease(false);
+        if(grabbingController)
+        {
+            grabbingController.ForceRelease(false);
+        }
         Destroy(gameObject);
     }
 

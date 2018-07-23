@@ -34,7 +34,11 @@ public class ControllerBtnHighlightHelp : MonoBehaviour
 
         if (noTooltipsMod == true)
         {
-            Destroy(tooltips.gameObject);
+            if(tooltips.gameObject != null)
+            {
+                Destroy(tooltips.gameObject);
+            }
+            
         }
 
         events.TriggerPressed += new ControllerInteractionEventHandler(DoTriggerPressed);
