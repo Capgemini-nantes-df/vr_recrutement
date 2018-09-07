@@ -4,6 +4,27 @@ using UnityEngine;
 using UnityEngine.Events;
 using VRTK;
 
+/// <summary>
+/// Titre : Description Obj Script
+/// Auteur : GOISLOT Renaud
+/// 
+/// Description : 
+/// 
+///     DEPRECATED ON THIS PROJECT
+///     
+///     Script permettant l'interaction avec un pannel depuis une manette HTC Vive.
+///     (similaire TVDescriptionScript.css, voir pour détails code)
+///     
+///     A la différence de TVDescriptionScript, script intéragissant qu'avec la description d'un seul objet (un script par Object où l'on souhaite afficher une description)
+/// 
+/// Effets : 
+/// 
+///     - Slide de pages avec un mouvement de pouce sur le pad circulaire de la manette (droit pour "suivant", gauche pour "précédent")
+///     - Affichage automatique de la description de l'objet pris en main (si celui-ci en dispose d'une)
+///     - Possibilité de fermer / ouvrir le pannel de description correpondant à l'objet pris en main avec un TouchpadPress
+///     
+/// </summary>
+
 public class DescriptionObjScript : MonoBehaviour
 {
 

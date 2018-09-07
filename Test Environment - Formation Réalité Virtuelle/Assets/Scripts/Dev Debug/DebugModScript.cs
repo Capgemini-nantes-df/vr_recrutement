@@ -4,6 +4,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using VRTK;
 
+/// <summary>
+/// Titre : DebugModScript
+/// Auteur : VRTK, modifier par GOISLOT Renaud
+/// Description :
+/// 
+///     Script de debug permettant de suivre dans les logs les appels d'event en fonction des interactions faites avec une manette de HTC Vive.
+///     A placer en component d'un objet Manette HTC Vive
+///     
+/// </summary>
+
 public class DebugModScript : MonoBehaviour {
 
     public string boutonDebugTag;

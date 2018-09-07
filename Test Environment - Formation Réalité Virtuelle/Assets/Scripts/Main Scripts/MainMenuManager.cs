@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Titre : Main Menu Manager
+/// Auteur : GOISLOT Renaud
+/// Description :
+/// 
+///     Game Manager de la scène du menu Principal
+///     
+/// </summary>
+
 public class MainMenuManager : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
+    //Fonction de selection de Panel
     public void SelectPanel(GameObject panel)
     {
         GameObject parent = panel.transform.parent.gameObject;

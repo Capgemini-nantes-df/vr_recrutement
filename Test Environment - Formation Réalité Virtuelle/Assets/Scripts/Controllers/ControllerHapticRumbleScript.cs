@@ -4,6 +4,20 @@ using System;
 using UnityEngine;
 using VRTK;
 
+/// <summary>
+/// Titre : Controller Haptic Rumble Script
+/// Auteur : GOISLOT Renaud
+/// Description :
+/// 
+///     Système de vibration de manette en fonction d'une interaction effectuée
+///     A placer en componente d'une manette de HTC Vive.
+/// 
+/// Effets : 
+/// 
+///     - Vibration de la manette en fonction d'un Event
+///     
+/// </summary>
+
 public class ControllerHapticRumbleScript : MonoBehaviour {
 
     [Header("Haptics On Touch")]
@@ -32,12 +46,8 @@ public class ControllerHapticRumbleScript : MonoBehaviour {
 
         events = GetComponent<VRTK_ControllerEvents>();
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
+    //Fonction de vibration de la manette (à appeler en Event)
     public void StartHapticTouch()
     {
         controllerReference = VRTK_ControllerReference.GetControllerReference(VRTK_DeviceFinder.GetModelAliasController(events.gameObject));

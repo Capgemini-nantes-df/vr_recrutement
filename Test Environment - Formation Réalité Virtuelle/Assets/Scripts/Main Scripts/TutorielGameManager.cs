@@ -2,6 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Titre : Tutoriel Game Manager
+/// Auteur : GOISLOT Renaud
+/// Description :
+/// 
+///    Game Manager spécifique pour la scène de tutoriel
+///     
+/// </summary>
+
 public class TutorielGameManager : MonoBehaviour {
 
     [Header("Tutorial Game Settings")]

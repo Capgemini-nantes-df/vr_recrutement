@@ -2,6 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Titre : Follow Transform Rotation X Script
+/// Auteur : GOISLOT Renaud
+/// Description :
+/// 
+///    Permet à un gameObjet de suivre la "Rotation X" d'un autre GameObject Assigné
+///     
+/// </summary>
+
 public class FollowTransformRotationXScript : MonoBehaviour {
 
     [Header("Object to Follow Settings")]

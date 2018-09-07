@@ -2,9 +2,26 @@
 using VRTK;
 using VRTK.Highlighters;
 
+/// <summary>
+/// Titre : Controller Button Highlight Help
+/// Auteur : GOISLOT Renaud
+/// Description :
+/// 
+///     Montrer à l'utilisateur les interactions possibles avec un objet avec un système de Highlight
+/// 
+/// Effets : 
+/// 
+///     - Highlight du bouton trigger (bouton de grab) lorsque l'on touche un objet. 
+///     - Afficher un descriptif des actions possibles avec un objet lorsque l'on touche celui-ci.
+///     - Affichage d'un système de tooltip (affichages de pannels expliquant chaques touches) pendant une periode donner au début du lancement du script
+///     
+/// </summary>
+
 public class ControllerBtnHighlightHelp : MonoBehaviour
 {
+    //Si bool = true , on active les tooltips seulement au début du script
     public bool tooltipsOnlyOneTime;
+    //Si bool = true , on n'active aucun tooltips
     public bool noTooltipsMod;
 
     private VRTK_ControllerTooltips tooltips;
@@ -32,6 +49,7 @@ public class ControllerBtnHighlightHelp : MonoBehaviour
         highlighted = false;
         HelpToolTips = true;
 
+        //Si noTooltipsMod = true, on supprime l'enfant correspondant aux tooltips
         if (noTooltipsMod == true)
         {
             if(tooltips.gameObject != null)
@@ -49,10 +67,13 @@ public class ControllerBtnHighlightHelp : MonoBehaviour
     }
 
 
+    //Action si Trigger Pressed
     private void DoTriggerPressed(object sender, ControllerInteractionEventArgs e)
     {
+        //Si highlight pas activé, on l'active sur le bouton correpondant et on active son tooltip
         if (highlighted == false)
         {
+            //On vérifie que les toolsTip sont activés
             if(noTooltipsMod == false)
             {
                 if (HelpToolTips == true && tooltipsOnlyOneTime == true)
@@ -71,8 +92,11 @@ public class ControllerBtnHighlightHelp : MonoBehaviour
             VRTK_ObjectAppearance.SetOpacity(VRTK_DeviceFinder.GetModelAliasController(events.gameObject), dimOpacity);
             highlighted = true;
         }
+
+        //Si highlight pas désactivé, on le désactive sur le bouton correpondant et on desactive son tooltip
         else if (highlighted == true)
         {
+            //On vérifie que les toolsTip sont activés
             if (noTooltipsMod == false)
             {
                 if (HelpToolTips == true && tooltipsOnlyOneTime == true)
@@ -98,8 +122,10 @@ public class ControllerBtnHighlightHelp : MonoBehaviour
         }
     }
 
+    //Action si le bouton trigger est relaché
     private void DoTriggerReleased(object sender, ControllerInteractionEventArgs e)
     {
+        //desactivation des highlights et tooltips si les highlight sont activés
         if (highlighted == true)
         {
             if (noTooltipsMod == false)
@@ -125,15 +151,19 @@ public class ControllerBtnHighlightHelp : MonoBehaviour
         }
     }
 
+    //Action si la manette entre en colision avec un objet
     private void OnTriggerEnter(Collider collider)
     {
         OnTriggerStay(collider);
     }
 
+    //Action tant que la manette est en colision avec un objet
     private void OnTriggerStay(Collider collider)
     {
+        //On vérifie si l'objet en colision est un objet avec lequel on peut intéragir
         if (collider.gameObject.GetComponent<VRTK_InteractableObject>() != null)
         {
+            //On vérifie si l'objet est grabbable (prennable) et si il n'y a pas de highlight déjà activé
             if (collider.gameObject.GetComponent<VRTK_InteractableObject>().isGrabbable == true && highlighted == false)
             {
                 highligher.HighlightElement(SDK_BaseController.ControllerElements.Trigger, highlightColor, highlightTimer);
@@ -146,12 +176,13 @@ public class ControllerBtnHighlightHelp : MonoBehaviour
 
     }
 
-
+    //Action si la manette n'est plus en colision avec un objet
     private void OnTriggerExit(Collider collider)
     {
-
+        //On vérifie si l'objet en colision est un objet avec lequel on peut intéragir
         if (collider.gameObject.GetComponent<VRTK_InteractableObject>() != null)
         {
+            //On vérifie si l'objet est grabbable (prennable) 
             if (collider.gameObject.GetComponent<VRTK_InteractableObject>().isGrabbable == true)
             {
 

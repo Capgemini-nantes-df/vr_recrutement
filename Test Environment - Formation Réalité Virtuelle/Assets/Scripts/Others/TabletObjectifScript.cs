@@ -5,6 +5,15 @@ using UnityEngine;
 using UnityEngine.Events;
 using VRTK;
 
+/// <summary>
+/// Titre : TabletObjectifScript
+/// Auteur : GOISLOT Renaud
+/// Description :
+/// 
+///     Script spécifique a l'objet tablet Objectif offrant diverses actions.
+///     
+/// </summary>
+
 public class TabletObjectifScript : MonoBehaviour {
 
     public LevelGameManager levelGameManager;
@@ -32,7 +41,7 @@ public class TabletObjectifScript : MonoBehaviour {
 
     protected virtual void Awake()
     {
-        VRTK_SDKManager.instance.AddBehaviourToToggleOnLoadedSetupChange(this);
+        //VRTK_SDKManager.instance.AddBehaviourToToggleOnLoadedSetupChange(this);
     }
 
     protected virtual void Start()
@@ -57,6 +66,7 @@ public class TabletObjectifScript : MonoBehaviour {
 
     void Update()
     {
+        //Change la couleur du Gameobjet quand il est Grab
         if (isGrabbed == true)
         {
             if (TabletPart1.GetComponent<MeshRenderer>().material != baseMaterial)
@@ -68,20 +78,16 @@ public class TabletObjectifScript : MonoBehaviour {
             {
                 TabletPart2.GetComponent<MeshRenderer>().material = baseMaterial;
             }
-
             tabletPanels.transform.GetChild(0).gameObject.SetActive(false);
             tabletPanels.transform.GetChild(1).gameObject.SetActive(true);
-            tvCountdownPanel.SetActive(true);
 
+            //Active le GameObject lançant un décompte avant le début de l'animation du moteur
+            tvCountdownPanel.SetActive(true);
             stop = false;
             StartCoroutine(StartCountdown());
         }
 
-        if (isGrabbed == false)
-        {
-            
-        }
-
+        //lancement du décompte avec calcul du temps restant
         if (stop == false)
         {
 
@@ -91,6 +97,8 @@ public class TabletObjectifScript : MonoBehaviour {
 
     }
 
+    //Coroutine : permet d'effectuer des actions "routinières"
+    // Utiliser ici pour le décompte
     private IEnumerator StartCountdown()
     {
         while (!stop)
@@ -106,29 +114,35 @@ public class TabletObjectifScript : MonoBehaviour {
         }
     }
 
+    //Action de lancement de l'animation
     private void AnimationBegin()
     {
         tvCountdownPanel.SetActive(false);
         levelGameManager.MotorMakeBegin();
+
+        //Si l'objet est grab, on force l'ungrab
         if(grabbingController)
         {
             grabbingController.ForceRelease(false);
         }
+
+        //On destroy l'objet
         Destroy(gameObject);
     }
 
-
+    //On informe le VRTK_SDKManager que l'objet a été destroy
     protected virtual void OnDestroy()
     {
         VRTK_SDKManager.instance.RemoveBehaviourToToggleOnLoadedSetupChange(this);
     }
 
-
+    //Action si l'objet est grab
     protected virtual void DoInteractableObjectIsGrabbed(object sender, InteractableObjectEventArgs e)
     {
         isGrabbed = true;
     }
 
+    //Action si l'objet est ungrab
     protected virtual void DoInteractableObjectIsUngrabbed(object sender, InteractableObjectEventArgs e)
     {
         isGrabbed = false;

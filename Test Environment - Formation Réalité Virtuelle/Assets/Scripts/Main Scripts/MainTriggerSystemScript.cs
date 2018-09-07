@@ -4,6 +4,17 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using VRTK;
 
+/// <summary>
+/// Titre : Main Trigger System Script
+/// Auteur : GOISLOT Renaud
+/// Description :
+/// 
+///     DEPRECATED ON THIS PROJECT
+///     
+///     Systeme manager
+///     
+/// </summary>
+
 public class MainTriggerSystemScript : MonoBehaviour {
 
     [Header("Menu Toggle Settings")]

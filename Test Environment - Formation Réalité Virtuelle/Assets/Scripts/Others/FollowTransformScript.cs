@@ -2,9 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Titre : Obj Snap Highlight Helper Script
+/// Auteur : GOISLOT Renaud
+/// Description :
+/// 
+///     NOT FINISHED == DON'T USE IT FOR NOW
+///     
+///     Permet à un gameObject de suivre le transform (Position et rotation, =/= scale) d'un gameObject associé.
+///     
+/// </summary>
+
 public class FollowTransformScript : MonoBehaviour {
 
-    // NOT FINISHED == DON'T USE IT FOR NOW //
 
     [Header("Object to Follow Settings")]
     public Transform objectToFollow;

@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Networking;
 using VRTK;
 
-public class TVDescriptionScript : MonoBehaviour
+public class NetworkTVDescription : NetworkBehaviour
 {
 
     public enum TouchpadPressPosition
@@ -19,16 +20,12 @@ public class TVDescriptionScript : MonoBehaviour
     public GameObject presentationPanel;
     public AudioSource swapEffectSource;
     public AudioClip swapEffectClip;
-    [Header("Controllers Settings")]
-    public VRTK_ControllerEvents rightControllerEvents;
-    public VRTK_ControllerEvents leftControllerEvents;
 
     protected List<VRTK_PanelMenuItemController> allPanelMenuItemController;
     protected GameObject currentDescObjPanel;
 
     private int currentPanelId;
 
-    
     protected VRTK_PanelMenuItemController currentPanelMenuItemController;
 
     // Swipe sensitivity / detection.
@@ -48,24 +45,50 @@ public class TVDescriptionScript : MonoBehaviour
     protected int objectsIsGrabbed = 0;
     protected GameObject previousDescObjPanel;
 
+    protected VRTK_ControllerEvents rightControllerEvents;
+    protected VRTK_ControllerEvents leftControllerEvents;
+
+    private NetworkIdentity objNetId;
+
 
     protected virtual void Start()
     {
-        currentPanelId = 0;
-
-        BindControllerEvents();
+        currentPanelId = 0; 
     }
 
     void Update()
     {
-        if (isPendingSwipeCheck)
+
+        if (rightControllerEvents != null || leftControllerEvents != null)
         {
-            CalculateSwipeAction();
+            if (isPendingSwipeCheck)
+            {
+                CalculateSwipeAction();
+            }
         }
+
+        if (rightControllerEvents == null || leftControllerEvents == null)
+        {
+            if(GameObject.FindGameObjectWithTag("RightController"))
+            {
+                rightControllerEvents = GameObject.FindGameObjectWithTag("RightController").GetComponentInChildren<VRTK_ControllerEvents>();
+            }
+           if(GameObject.FindGameObjectWithTag("LeftController"))
+            {
+                leftControllerEvents = GameObject.FindGameObjectWithTag("LeftController").GetComponentInChildren<VRTK_ControllerEvents>();
+            }
+            
+            if (rightControllerEvents != null && leftControllerEvents != null)
+            {
+                BindControllerEvents();
+            }
+        }     
     }
 
     protected virtual void BindControllerEvents()
     {
+       
+
         rightControllerEvents.TouchpadPressed += new ControllerInteractionEventHandler(DoTouchpadPress);
         rightControllerEvents.TouchpadTouchStart += new ControllerInteractionEventHandler(DoTouchpadTouched);
         rightControllerEvents.TouchpadTouchEnd += new ControllerInteractionEventHandler(DoTouchpadUntouched);
@@ -80,8 +103,53 @@ public class TVDescriptionScript : MonoBehaviour
 
     public void ActiveObjDescPanel(GameObject descObjPanel)
     {
+        Debug.Log(descObjPanel);
+
+        if (isServer)
+        {
+            CmdActiveObjDescPanel(descObjPanel);
+        }           
+    }
+
+    public void DesactiveObjDescPanel(GameObject descObjPanel)
+    {
+        if (isServer)
+        {
+            CmdDesactiveObjDescPanel(descObjPanel);
+        }       
+    }
+
+    [Command]
+    void CmdActiveObjDescPanel(GameObject go)
+    {
+        if (go.GetComponent<NetworkIdentity>() == null)
+        {
+            return;
+        }
+        // get the object's network ID
+        objNetId = go.GetComponent<NetworkIdentity>();
+        RpcActiveObjDescPanel(go);
+    }
+
+    [Command]
+    void CmdDesactiveObjDescPanel(GameObject go)
+    {
+        if (go.GetComponent<NetworkIdentity>() == null)
+        {
+            return;
+        }
+        // get the object's network ID
+        objNetId = go.GetComponent<NetworkIdentity>();
+        RpcDesactiveObjDescPanel(go);
+    }
+
+    [ClientRpc]
+    void RpcActiveObjDescPanel(GameObject descObjPanel)
+    {
+        Debug.Log(descObjPanel);
+
         objectsIsGrabbed += 1;
-        if(objectsIsGrabbed == 2)
+        if (objectsIsGrabbed == 2)
         {
             previousDescObjPanel = currentDescObjPanel;
         }
@@ -117,17 +185,18 @@ public class TVDescriptionScript : MonoBehaviour
         currentPanelMenuItemController.gameObject.SetActive(true);
     }
 
-    public virtual void DesactiveObjDescPanel(GameObject descObjPanel)
+    [ClientRpc]
+    void RpcDesactiveObjDescPanel(GameObject descObjPanel)
     {
         currentPanelId = 0;
         objectsIsGrabbed -= 1;
 
-        if(objectsIsGrabbed ==  1)
+        if (objectsIsGrabbed == 1)
         {
-            if(descObjPanel == currentDescObjPanel)
+            if (descObjPanel == currentDescObjPanel)
             {
                 currentDescObjPanel = previousDescObjPanel;
-            } 
+            }
 
             allPanelMenuItemController = new List<VRTK_PanelMenuItemController>();
 
@@ -157,11 +226,12 @@ public class TVDescriptionScript : MonoBehaviour
             currentDescObjPanel.SetActive(true);
             currentPanelMenuItemController.gameObject.SetActive(true);
         }
-        
+
     }
 
+
     protected virtual void DoTouchpadPress(object sender, ControllerInteractionEventArgs e)
-    {   
+    {
 
     }
 
@@ -281,6 +351,35 @@ public class TVDescriptionScript : MonoBehaviour
 
     protected virtual void OnSwipeLeft()
     {
+       if(isServer)
+        {
+            CmdOnSwipLeft();
+        }
+    }
+
+    protected virtual void OnSwipeRight()
+    {
+        if(isServer)
+        {
+            CmdOnSwipRight();
+        }
+    }
+
+    [Command]
+    void CmdOnSwipLeft()
+    {
+        RpcOnSwipLeft();
+    }
+
+    [Command]
+    void CmdOnSwipRight()
+    {
+        RpcOnSwipRight();
+    }
+
+    [ClientRpc]
+    void RpcOnSwipLeft()
+    {
         if (currentPanelMenuItemController != null)
         {
             if (currentPanelId - 1 >= 0)
@@ -294,7 +393,8 @@ public class TVDescriptionScript : MonoBehaviour
         }
     }
 
-    protected virtual void OnSwipeRight()
+    [ClientRpc]
+    void RpcOnSwipRight()
     {
         if (currentPanelMenuItemController != null)
         {
@@ -311,12 +411,12 @@ public class TVDescriptionScript : MonoBehaviour
 
     protected virtual void OnSwipeTop()
     {
-       
+
     }
 
     protected virtual void OnSwipeBottom()
     {
-        
+
     }
 
 

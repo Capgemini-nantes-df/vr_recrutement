@@ -6,29 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/OLD_Scenes/OLD_testZone3.unity
-    guid: 829e6f6eae1913540a81951e70b2c811
-  - enabled: 0
-    path: Assets/Scenes/OLD_Scenes/OLD_testZone2.unity
-    guid: d98684b85070a484d9ac8898fca0fa87
-  - enabled: 0
-    path: Assets/Scenes/OLD_Scenes/OLD_testZone1.unity
-    guid: 94923011950fd0046b31a4a58130adf8
-  - enabled: 0
-    path: Assets/Scenes/OLD_Scenes/OLD_VRTK_Demo.unity
-    guid: d04351b4d7d5edc4299f467c3d085434
-  - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 2f4b4789fec88f44ca74861d25df0aab
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tutoriel_Intro.unity
     guid: a686b473511742d42b51847c75520c84
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tutoriel_TestZone1.unity
     guid: e440fc01caf53f74da402ac2c3314d74
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Lvl2_Engine_2_Tuto.unity
     guid: 7fe1919bacd25c94ca1fd7fd4db822fb
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Lvl2_Engine_2.unity
     guid: 55518fe0b2863c94b954aab499f9800d
+  - enabled: 1
+    path: Assets/Scenes/Demo_Network_Engine2.unity
+    guid: 056b225d1fb3c1f4fb9491df15a8446c

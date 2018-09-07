@@ -4,6 +4,19 @@ using UnityEngine;
 using UnityEngine.Events;
 using VRTK;
 
+/// <summary>
+/// Titre : Elevator Btn Script
+/// Auteur : GOISLOT Renaud
+/// Description :
+/// 
+///     DEPRECATED ON THIS PROJECT
+///     A ne pas utiliser.
+///     
+///     Script spécifique à l'intéraction avec un gameObjet servant de télécommande.
+///     
+///     
+/// </summary>
+
 public class ElevatorBtnScript : MonoBehaviour {
 
     public enum TouchpadPressPosition

@@ -3,6 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using VRTK;
 
+/// <summary>
+/// Titre : SpawnerBox
+/// Auteur : GOISLOT Renaud
+/// Description :
+/// 
+///     Script Spécifique pour le GameObject SpawnBox.
+///     Permet le Spawn d'objets en intéragissant avec celui-ci.
+///     
+/// </summary>
+
 public class SpawnerBox : MonoBehaviour {
 
     public GameObject objectToSpawn;
@@ -22,9 +32,12 @@ public class SpawnerBox : MonoBehaviour {
         count = 0;
     }
 
+    //Action si un objet entre en collision avec
     private void OnTriggerStay(Collider collider)
     {
         VRTK_InteractGrab grabbingController = (collider.gameObject.GetComponent<VRTK_InteractGrab>() ? collider.gameObject.GetComponent<VRTK_InteractGrab>() : collider.gameObject.GetComponentInParent<VRTK_InteractGrab>());
+        
+        //On continue le script si l'objet en collision est une manette, qu'il peut grab un objet, que le delais d'attente avec le spawn précédent est passé et qu'il reste encore des objets à spawn
         if (CanGrab(grabbingController) && Time.time >= spawnDelayTimer && count < maxSpawn)
         {
             stuffInTheBox.transform.GetChild(count).gameObject.SetActive(false);
@@ -50,6 +63,7 @@ public class SpawnerBox : MonoBehaviour {
         
     }
 
+    //Fonction permettant le replacement d'un piston dans la spawnBox (appeler en Event)
     private void PutOnePiston(GameObject piston)
     {
         piston.GetComponent<RespawnObject>().RespawnToStart();
@@ -62,6 +76,7 @@ public class SpawnerBox : MonoBehaviour {
 
     }
 
+    //Action pour faire spawn un objet or de la boite
     public void RespawnPistonsOutOfTheBox()
     {
         int childCount = pistonsOutOfTheBox.transform.childCount;
@@ -71,6 +86,7 @@ public class SpawnerBox : MonoBehaviour {
         }
     }
 
+    //Action pour vérifier si la manette peut grab un objet
     private bool CanGrab(VRTK_InteractGrab grabbingController)
     {
         return (grabbingController && grabbingController.GetGrabbedObject() == null && grabbingController.IsGrabButtonPressed());

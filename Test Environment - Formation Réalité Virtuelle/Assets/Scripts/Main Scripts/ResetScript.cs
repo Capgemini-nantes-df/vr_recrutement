@@ -6,6 +6,17 @@ using UnityEngine.SceneManagement;
 
 public class ResetScript : MonoBehaviour {
 
+    /// <summary>
+    /// Titre : ResetScript
+    /// Auteur : GOISLOT Renaud
+    /// Description :
+    /// 
+    ///     DEPRECATED ON THIS PROJET
+    ///     
+    ///     Script permettant de reset la scene si la touche désigné est pressé. (Script pour debug)
+    ///     
+    /// </summary>
+
     [Header("Reset key Settings")]
     public string resetKey;
 	

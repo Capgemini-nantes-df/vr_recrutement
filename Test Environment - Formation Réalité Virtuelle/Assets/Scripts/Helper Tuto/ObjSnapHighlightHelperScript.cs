@@ -4,6 +4,19 @@ using UnityEngine;
 using VRTK;
 using VRTK.Highlighters;
 
+/// <summary>
+/// Titre : Obj Snap Highlight Helper Script
+/// Auteur : GOISLOT Renaud
+/// Description :
+/// 
+///     DEPRECATED ON THIS PROJECT
+///     (Préférer utiliser AllSnapHighlightHelperScript)
+///     
+///     Highlight des Zone de drop restants dont l'objet associé n'est pas encore assemblé sur le moteur
+///     A placer en component du GameObjet du système de la scène
+///     
+/// </summary>
+
 public class ObjSnapHighlightHelperScript : MonoBehaviour {
 
     public GameObject[] SnapDropZones;

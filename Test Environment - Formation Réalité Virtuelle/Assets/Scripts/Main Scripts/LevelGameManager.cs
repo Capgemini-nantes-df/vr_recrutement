@@ -5,6 +5,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using VRTK;
 
+/// <summary>
+/// Titre : Level Game Manager
+/// Auteur : GOISLOT Renaud
+/// Description :
+/// 
+///     Game Manager d'une scène standard d'un niveau
+/// 
+/// </summary>
+
 public class LevelGameManager : MonoBehaviour {
 
     [Header("Motor Animation Settings")]
@@ -64,9 +73,11 @@ public class LevelGameManager : MonoBehaviour {
         isFinished = false;
         validSnapCount = 0;
 
+        //On calcule le nombre de zone de drop (objet à placer) dans la scène (pour le décompte des points)
         allSnapDropZone = GameObject.FindGameObjectsWithTag(snapDropTag);
         snapDropZoneCount = GameObject.FindGameObjectsWithTag(snapDropTag).Length;
 
+        //On recherche les diffuseurs de musiques et on la lance
         allMusicDiffusers = GameObject.FindGameObjectsWithTag(musicDiffuseTag);
 
         foreach (GameObject md in allMusicDiffusers)
@@ -80,19 +91,22 @@ public class LevelGameManager : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
-        //Sync of all Music Diffusers
+        //Syncde tout les Music Diffusers
         for (int i=1; i < allMusicDiffusers.Length; i++ )
         {
             allMusicDiffusers[i].GetComponent<AudioSource>().timeSamples = allMusicDiffusers[0].GetComponent<AudioSource>().timeSamples;
         }
 
+        //Action si le gameObjet MotorPresentation est activé
         if (MotorPresentation.activeSelf)
         {
+            //Action si l'animation "Motor_end_pres" de motorAnim est lancé
             if (motorAnim.GetCurrentAnimatorStateInfo(0).IsName("motor_end_pres"))
             {
                 motorAnim.SetBool("isBeginPresentation", false);
             }
 
+            //Action si l'animation "motor_end" de motorAnim est lancé
             if (motorAnim.GetCurrentAnimatorStateInfo(0).IsName("motor_end_placement"))
             {
                 buttonStart.SetActive(false);
@@ -106,6 +120,7 @@ public class LevelGameManager : MonoBehaviour {
             }
         }
        
+        //action si la tâche est accompli (toutes les pièces ont été assemblées)
         if(isFinished == false)
         {
             if (snapDropZoneCount != 0)
@@ -119,15 +134,13 @@ public class LevelGameManager : MonoBehaviour {
 
                     victorySound.Play();
 
-                    //buttonEnd.SetActive(true);
-
                     MotorPresentation.SetActive(true);
                     MotorAssemblage.SetActive(false);
 
-                    //Run Motor running Animation 
+                    //Lance l'animation MotorRunning
                     MotorRunning();
 
-                    ///Enable TV End Panel///
+                    //Active le panel de fin de niveau
                     for (int i = 0; i < tvEndPanel.transform.parent.transform.childCount; i++)
                     {
                         if (tvEndPanel.transform.parent.transform.GetChild(i).gameObject.activeSelf == true)
@@ -144,11 +157,14 @@ public class LevelGameManager : MonoBehaviour {
                     tabletScore.transform.rotation = endTransformTablet.rotation;
                 }
 
+                //respawn tout les objets pas encore placés si l'on presse la touche "Space"
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     RespawnAllObjNotSnapped();
                 }
             }
+
+            //Si aucunes zone de drop n'est détecté, on refait une tentative de recherche des zones de drop
             else
             {
                 allSnapDropZone = GameObject.FindGameObjectsWithTag(snapDropTag);
@@ -172,11 +188,13 @@ public class LevelGameManager : MonoBehaviour {
         motorAnim.SetBool("isBeginPlacement", true);
     }
 
+    //activation de l'animation du moteur en mouvement
     public void MotorRunning()
     {
         motorAnim.SetBool("isRunning", true);
     }
 
+    //Fonction permettant d'effectuer un update du nombre d'objets restants à placer
     public void UpdateNumberCompletedSpot(string name)
     {
         int currentValidSnapCount = validSnapCount;
@@ -208,17 +226,20 @@ public class LevelGameManager : MonoBehaviour {
         
     }
 
+    //fonction permettant d'update le score dans le champs texte
     private void UpdateScoringText()
     {
         scoringText.text = validSnapCount + "/" + snapDropZoneCount;
     }
 
+    //fonction permettant d'update le texte de l'action effectuer (placer ou retirer un objet)
     private void UpdateDebugSnapText(string textUpdate)
     {
         debugSnapText.text = textUpdate;
 
     }
 
+    //fonction permettant l'update du timer de la tâche
     private void UpdateTimeText()
     {
         float t = Time.time - startTime;
@@ -236,6 +257,7 @@ public class LevelGameManager : MonoBehaviour {
         timerText.text = minutes + ":" + seconds;
     }
 
+    //Fonction permettant de respawn tout les objets pas encore placer (pas encore dans leur snap zone)
     public void RespawnAllObjNotSnapped()
     {
         foreach(RespawnObject child in toSnap.GetComponentsInChildren<RespawnObject>())

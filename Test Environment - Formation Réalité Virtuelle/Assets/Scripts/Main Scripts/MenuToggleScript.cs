@@ -2,6 +2,15 @@
 using UnityEngine;
 using VRTK;
 
+/// <summary>
+/// Titre : Menu Toggle Script
+/// Auteur : GOISLOT Renaud
+/// Description :
+/// 
+///     Script Manager du Menu de pause.
+///     
+/// </summary>
+
 public class MenuToggleScript : MonoBehaviour {
 
     [Header("Menu Toggle Settings")]
